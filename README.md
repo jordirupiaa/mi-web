@@ -1,90 +1,57 @@
 # Hotel Casa Mas
 
-Production frontend for Hotel Casa Mas (Lloret de Mar, Girona), built with React, TypeScript, Vite, Tailwind CSS and the Supabase JS client. It connects to an **existing** Supabase backend — this project does not create, replace, or migrate any database.
+Production frontend for Hotel Casa Mas (Lloret de Mar, Girona), built with React, TypeScript, Vite and Tailwind CSS. It is a fully static site — there is no backend, database or admin panel. All content (rooms, contact details, policies, FAQ) is hard-coded in `src/data/`.
 
 ## Stack
 
 - React 19 + TypeScript + Vite 8
 - Tailwind CSS v4 (via `@tailwindcss/vite`, configured in `src/index.css`)
 - React Router (client-side routing)
-- `@supabase/supabase-js` (public/anon key only)
 - Lucide React icons
 
 ## Getting started
 
 ```bash
 npm install
-cp .env.example .env.local   # then fill in the two values below
 npm run dev
 ```
 
-### Required environment variables
+No environment variables or backend setup are required — the site works fully out of the box.
 
-| Variable | Where to find it |
-| --- | --- |
-| `VITE_SUPABASE_URL` | Supabase Dashboard → Project Settings → API → Project URL |
-| `VITE_SUPABASE_ANON_KEY` | Supabase Dashboard → Project Settings → API → anon / publishable key |
+## Why no backend
 
-Never put the `service_role` key in this project — it is a frontend app and the key would be public.
+Reservations are handled entirely by the hotel's SiteMinder-connected booking engine ([direct-book.com](https://direct-book.com/properties/hotelcasamasdirect)) — every "Reservar" call to action opens that engine directly (see `src/utils/directBook.ts`), carrying over whatever dates/guests the visitor already picked. Live availability and pricing live there, not on this site.
 
-## Existing backend, not a new one
+Any other enquiry is answered directly by phone or email (`src/data/businessInfo.ts`), or by the on-site chat widget, which matches common questions against a fixed FAQ (`src/data/faq.ts`) — no server round-trip needed.
 
-This app reads and writes to six tables that already exist in the Supabase project: `services`, `appointments`, `business_hours`, `blocked_dates`, `business_settings`, `admin_users`. No migrations, new tables, or schema changes are made by this codebase. See `src/types/database.ts` for the exact shape this app expects — it should always mirror the real schema, not the other way around.
-
-- `services` rows are presented as bookable room/accommodation types. `price` is nullable in the real data — the UI shows "Precio a consultar" (price on request) instead of a fake number when it's unset.
-- Public users can INSERT into `appointments` (new reservation requests) but cannot SELECT existing rows — enforced by the database's own RLS policies, not by this app. The public booking form deliberately does a plain `.insert()` (never `.insert().select()`), so it never attempts to read back what it just wrote.
-- Admin authorization is `admin_users.user_id = auth.uid()`, checked fresh against the database on every session — never by email, never hardcoded, never via `localStorage`.
-
-## Known schema limitation: multi-night stays
-
-`appointments` has a single `appointment_date` (date) plus `start_time`/`end_time` (time-of-day) — the shape of a same-day appointment slot, not a date range. It has no `guests` column and no per-room inventory/rate-plan table.
-
-This app works within that schema rather than inventing new columns:
-
-- `appointment_date` is used as the **check-in date**.
-- `start_time` / `end_time` represent the **arrival window on that day** (sourced from `business_hours` for that weekday when available, otherwise a default arrival window) — they are not a checkout timestamp.
-- Checkout date, number of nights, and guest counts (adults/children) are written into the existing `notes` text field as a clearly formatted summary, e.g.:
-  ```
-  Reserva de alojamiento: Twin Room with Balcony
-  Fecha de salida: 2026-08-22 (3 noches)
-  Huéspedes: 2 adulto(s), 1 niño(s)
-  Solicitudes especiales: llegada tardía
-  ```
-- The booking UI still shows guests a proper check-in/check-out date range and a nights count — that logic lives entirely in the frontend (`src/utils/date.ts`), computed from the two dates the guest picks.
-
-**If true structured multi-night bookings are wanted** (queryable checkout date, guest counts as real columns, per-night rate history), the migration that would be required is additive and non-destructive:
-
-```sql
-alter table appointments
-  add column check_out_date date,
-  add column adults integer,
-  add column children integer default 0;
-```
-
-This project does **not** run that migration automatically — it's listed here so you can decide if/when to apply it. Nothing in the current app depends on it existing.
+Since nothing on the site needs to be read or written from a database, there is no Supabase project, no admin panel, and no environment configuration to manage. Room types, prices-on-request, contact details and hotel policies are plain data files that get edited directly in the codebase and redeployed — see "Updating content" below.
 
 ## Project structure
 
 ```
 src/
-  lib/
-    supabase.ts         # Supabase client (anon key only)
-    queries/             # one file per table, all reads/writes go through here
-  types/database.ts      # hand-written types mirroring the real schema
-  context/AuthContext.tsx# Supabase Auth session + admin_users check
-  hooks/                 # data-fetching hooks with loading/error state
-  components/            # ui/, layout/, home/, rooms/, booking/, admin/
-  pages/                 # one per route, plus pages/admin/* for the dashboard
-  data/images.ts          # placeholder image config layer (see below)
+  data/
+    rooms.ts            # the 6 real room types (id, slug, price)
+    roomTranslations.ts  # per-language name/description for each room, keyed by slug
+    businessInfo.ts       # phone, email, address
+    images.ts             # room photo galleries (from src/assets/rooms/<slug>/)
+    faq.ts                 # chat widget FAQ content, per language
+    hotelFacts.ts          # small standalone facts (room count, accepted cards)
+  utils/directBook.ts    # builds direct-book.com booking-engine URLs
+  components/            # ui/, layout/, home/, rooms/, chat/, shared/
+  pages/                 # one per route
 ```
+
+## Updating content
+
+- **Rooms**: edit `src/data/rooms.ts` (add/remove a room) and `src/data/roomTranslations.ts` (its name/description in all 6 languages). Photos are picked up automatically from `src/assets/rooms/<slug>/` — drop any image file in the matching folder, no code change needed.
+- **Contact details**: edit `src/data/businessInfo.ts`.
+- **FAQ / chat widget answers**: edit `src/data/faq.ts`.
+- **Hotel policies (check-in/out hours, pets, smoking, parking)**: these are translated UI copy — edit `src/i18n/locales/*.json` under the `policies` key.
 
 ## Images
 
-`services` has no image column, so `src/data/images.ts` is a small frontend-only mapping from room position to a placeholder photo. Swap the URLs in that one file once real Hotel Casa Mas photography is available — no other file needs to change.
-
-## A note on `src/lib/supabase.ts`
-
-The client is created via `new SupabaseClient(...)` directly (not the `createClient` factory) and **without** the `Database` generic wired through it. The installed `@supabase/supabase-js` version has a generic-inference defect where passing the `Database` type collapses every `insert()`/`update()` payload type to `never`, verified in isolation against this exact version and confirmed to affect the factory function, direct class instantiation, and every combination of explicit type arguments tried. Type safety is preserved at the boundary instead: every function in `src/lib/queries/*.ts` has an explicit, hand-verified parameter and return type built from `src/types/database.ts`. If a future `supabase-js` patch fixes this, reintroducing `createClient<Database>(...)` is a one-line change.
+Real Hotel Casa Mas room photos live in `src/assets/rooms/<slug>/`, one subfolder per room type. Location photos live in `public/images/location/`. There is no stock/internet photography anywhere in this project.
 
 ## Scripts
 

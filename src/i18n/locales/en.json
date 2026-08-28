@@ -31,7 +31,6 @@
     "contact": "Contact",
     "rights": "All rights reserved.",
     "legal": "Terms, conditions and privacy",
-    "adminAccess": "Private access",
     "photoCredit": "Photography: {{name}}"
   },
   "hero": {
@@ -56,10 +55,7 @@
   "featuredRooms": {
     "eyebrow": "Accommodation",
     "heading": "Rooms right in the centre of Lloret de Mar",
-    "viewAll": "View all rooms",
-    "loading": "Loading rooms…",
-    "emptyTitle": "Available soon",
-    "emptyDescription": "We're updating our room offering. Please contact us to check availability."
+    "viewAll": "View all rooms"
   },
   "locationAdvantage": {
     "eyebrow": "Location",
@@ -83,8 +79,7 @@
   },
   "contactStrip": {
     "eyebrow": "Contact",
-    "heading": "We're here to help",
-    "loading": "Loading contact details…"
+    "heading": "We're here to help"
   },
   "roomCard": {
     "priceOnRequest": "Price on request",
@@ -97,10 +92,7 @@
     "eyebrow": "Accommodation",
     "heading": "Our rooms",
     "intro": "Accommodation right in the centre of Lloret de Mar, 3 minutes from the beach and on the same street as the shops. Check availability and book directly with us.",
-    "includedTitle": "Every room includes",
-    "loading": "Loading rooms…",
-    "emptyTitle": "No rooms available",
-    "emptyDescription": "There are no active rooms published right now. Contact us directly to check availability."
+    "includedTitle": "Every room includes"
   },
   "roomAmenities": {
     "bathroom": "Full private bathroom (shower or bathtub)",
@@ -142,7 +134,6 @@
     "heading": "Steps from Lloret de Mar's beach",
     "body": "Hotel Casa Mas sits on a picturesque pedestrian street in the historic and commercial centre of Lloret de Mar, Girona — right in the heart of the Costa Brava.",
     "mapTitle": "Map of Hotel Casa Mas's location",
-    "addressLoading": "Loading address…",
     "streetAlt": "Sant Romà church, in central Lloret de Mar",
     "promenadeAlt": "Castell de Lloret",
     "nearbyTitle": "Nearby points of interest",
@@ -170,9 +161,7 @@
     "goToBooking": "Go to bookings",
     "policiesTitle": "Hotel policies",
     "hoursTitle": "Reception hours",
-    "hoursEmpty": "Hours not available right now.",
-    "loadingContact": "Loading contact details…",
-    "loadingHours": "Loading hours…"
+    "hoursBody": "During the summer season, reception is staffed 24 hours a day. For anything you need during your stay, please come directly to reception and we'll be glad to help."
   },
   "policies": {
     "checkIn": "Check-in",
@@ -185,22 +174,6 @@
     "parking": "Parking",
     "checkInHours": "4:30 PM – 11:30 PM",
     "checkOutHours": "7:00 AM – 11:00 AM"
-  },
-  "businessHours": {
-    "sunday": "Sunday",
-    "monday": "Monday",
-    "tuesday": "Tuesday",
-    "wednesday": "Wednesday",
-    "thursday": "Thursday",
-    "friday": "Friday",
-    "saturday": "Saturday",
-    "closed": "Closed"
-  },
-  "feedback": {
-    "loading": "Loading…",
-    "retry": "Retry",
-    "loadError": "We couldn't load the data right now. Please try again in a moment.",
-    "configWarning": "Supabase configuration is missing (VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY). The site can't load real data until these environment variables are set."
   },
   "notFound": {
     "heading": "Page not found",

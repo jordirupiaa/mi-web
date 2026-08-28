@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { useActiveServices } from '../../hooks/useHotelData'
+import { ROOMS } from '../../data/rooms'
 import { RoomCard } from '../rooms/RoomCard'
-import { Spinner, ErrorMessage, EmptyState } from '../ui/Feedback'
 
 export function FeaturedRooms() {
   const { t } = useTranslation()
-  const { data: services, loading, error, reload } = useActiveServices()
 
   return (
     <section className="bg-sand-50 py-24">
@@ -26,22 +24,10 @@ export function FeaturedRooms() {
           </Link>
         </div>
 
-        <div className="mt-12">
-          {loading && <Spinner label={t('featuredRooms.loading')} />}
-          {error && <ErrorMessage message={error} onRetry={reload} />}
-          {!loading && !error && services && services.length === 0 && (
-            <EmptyState
-              title={t('featuredRooms.emptyTitle')}
-              description={t('featuredRooms.emptyDescription')}
-            />
-          )}
-          {!loading && !error && services && services.length > 0 && (
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {services.slice(0, 3).map((service, index) => (
-                <RoomCard key={service.id} service={service} index={index} />
-              ))}
-            </div>
-          )}
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {ROOMS.slice(0, 3).map((room, index) => (
+            <RoomCard key={room.id} room={room} index={index} />
+          ))}
         </div>
       </div>
     </section>

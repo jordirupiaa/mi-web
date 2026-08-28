@@ -31,7 +31,6 @@
     "contact": "Contacto",
     "rights": "Todos los derechos reservados.",
     "legal": "Términos, condiciones y privacidad",
-    "adminAccess": "Acceso privado",
     "photoCredit": "Fotografías: {{name}}"
   },
   "hero": {
@@ -56,10 +55,7 @@
   "featuredRooms": {
     "eyebrow": "Alojamiento",
     "heading": "Habitaciones en pleno centro de Lloret de Mar",
-    "viewAll": "Ver todas las habitaciones",
-    "loading": "Cargando habitaciones…",
-    "emptyTitle": "Próximamente disponible",
-    "emptyDescription": "Estamos actualizando nuestra oferta de alojamiento. Contáctenos para conocer disponibilidad."
+    "viewAll": "Ver todas las habitaciones"
   },
   "locationAdvantage": {
     "eyebrow": "Ubicación",
@@ -83,8 +79,7 @@
   },
   "contactStrip": {
     "eyebrow": "Contacto",
-    "heading": "Estamos para ayudarle",
-    "loading": "Cargando datos de contacto…"
+    "heading": "Estamos para ayudarle"
   },
   "roomCard": {
     "priceOnRequest": "Precio a consultar",
@@ -97,10 +92,7 @@
     "eyebrow": "Alojamiento",
     "heading": "Nuestras habitaciones",
     "intro": "Alojamiento en pleno centro de Lloret de Mar, a 3 minutos de la playa y en la misma calle que las tiendas. Consulte disponibilidad y reserve directamente con nosotros.",
-    "includedTitle": "Todas las habitaciones incluyen",
-    "loading": "Cargando habitaciones…",
-    "emptyTitle": "Sin habitaciones disponibles",
-    "emptyDescription": "En este momento no hay alojamientos activos publicados. Contáctenos directamente para consultar disponibilidad."
+    "includedTitle": "Todas las habitaciones incluyen"
   },
   "roomAmenities": {
     "bathroom": "Baño privado completo (ducha o bañera)",
@@ -142,7 +134,6 @@
     "heading": "A pasos de la playa de Lloret de Mar",
     "body": "Hotel Casa Mas se sitúa en una pintoresca calle peatonal del centro histórico y comercial de Lloret de Mar, Girona — en pleno corazón de la Costa Brava.",
     "mapTitle": "Mapa de ubicación de Hotel Casa Mas",
-    "addressLoading": "Cargando dirección…",
     "streetAlt": "Iglesia de Sant Romà, en el centro de Lloret de Mar",
     "promenadeAlt": "Castell de Lloret",
     "nearbyTitle": "Puntos de interés cercanos",
@@ -170,9 +161,7 @@
     "goToBooking": "Ir a reservas",
     "policiesTitle": "Políticas del hotel",
     "hoursTitle": "Horario de recepción",
-    "hoursEmpty": "Horario no disponible en este momento.",
-    "loadingContact": "Cargando datos de contacto…",
-    "loadingHours": "Cargando horario…"
+    "hoursBody": "Durante la temporada de verano, la recepción está disponible las 24 horas del día. Para cualquier necesidad durante su estancia, puede dirigirse directamente a recepción y le atenderemos con mucho gusto."
   },
   "policies": {
     "checkIn": "Entrada (check-in)",
@@ -185,22 +174,6 @@
     "parking": "Parking",
     "checkInHours": "16:30 – 23:30 h",
     "checkOutHours": "07:00 – 11:00 h"
-  },
-  "businessHours": {
-    "sunday": "Domingo",
-    "monday": "Lunes",
-    "tuesday": "Martes",
-    "wednesday": "Miércoles",
-    "thursday": "Jueves",
-    "friday": "Viernes",
-    "saturday": "Sábado",
-    "closed": "Cerrado"
-  },
-  "feedback": {
-    "loading": "Cargando…",
-    "retry": "Reintentar",
-    "loadError": "No se pudieron cargar los datos en este momento. Inténtelo de nuevo en unos instantes.",
-    "configWarning": "Falta la configuración de Supabase (VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY). El sitio no puede cargar datos reales hasta que se configuren estas variables de entorno."
   },
   "notFound": {
     "heading": "Página no encontrada",

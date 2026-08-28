@@ -1,19 +1,19 @@
 import { useTranslation } from 'react-i18next'
 import { ArrowUpRight } from 'lucide-react'
-import type { ServiceRow } from '../../types/database'
-import { roomGalleryForService } from '../../data/images'
+import type { Room } from '../../data/rooms'
+import { roomGalleryForSlug } from '../../data/images'
 import { translateRoom } from '../../data/roomTranslations'
 import { formatCurrency } from '../../utils/format'
 import { buildDirectBookUrl } from '../../utils/directBook'
 import { RoomGallery } from './RoomGallery'
 
-export function RoomCard({ service, index }: { service: ServiceRow; index: number }) {
+export function RoomCard({ room, index }: { room: Room; index: number }) {
   const { t, i18n } = useTranslation()
-  const { name, description } = translateRoom(service, i18n.resolvedLanguage ?? 'es')
+  const { name, description } = translateRoom(room.slug, i18n.resolvedLanguage ?? 'es')
 
   return (
     <article className="flex flex-col overflow-hidden rounded-3xl bg-warmwhite shadow-card ring-1 ring-sand-200/80 transition-transform duration-300 hover:-translate-y-1">
-      <RoomGallery images={roomGalleryForService(service.name, index)} alt={t('roomCard.interiorAlt', { name })} />
+      <RoomGallery images={roomGalleryForSlug(room.slug, index)} alt={t('roomCard.interiorAlt', { name })} />
 
       <div className="flex flex-1 flex-col p-6">
         <h3 className="font-display text-xl text-charcoal-800">{name}</h3>
@@ -25,11 +25,11 @@ export function RoomCard({ service, index }: { service: ServiceRow; index: numbe
 
         <div className="mt-5 flex items-end justify-between border-t border-sand-200 pt-5">
           <div className="font-display text-2xl text-charcoal-800">
-            {service.price === null ? (
+            {room.price === null ? (
               <span className="text-lg text-charcoal-500">{t('roomCard.priceOnRequest')}</span>
             ) : (
               <>
-                {formatCurrency(service.price)}
+                {formatCurrency(room.price)}
                 <span className="ml-1 text-xs text-charcoal-400">{t('roomCard.perNight')}</span>
               </>
             )}

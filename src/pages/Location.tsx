@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import { MapPin, Waves, MapPinned, Music } from 'lucide-react'
-import { useBusinessSettings } from '../hooks/useHotelData'
-import { Spinner } from '../components/ui/Feedback'
+import { BUSINESS_INFO } from '../data/businessInfo'
 import { BEACH_IMAGES, NIGHTLIFE_IMAGE } from '../data/images'
 import { PageSeo } from '../components/shared/PageSeo'
 
@@ -9,9 +8,8 @@ const NEARBY_PLACE_KEYS = ['beach', 'church', 'casino', 'busStation', 'museum'] 
 
 export function Location() {
   const { t } = useTranslation()
-  const { data: settings, loading } = useBusinessSettings()
-  const address = settings?.business_address ?? 'Lloret de Mar, Girona, España'
-  const mapQuery = encodeURIComponent(`${address}`)
+  const address = BUSINESS_INFO.address
+  const mapQuery = encodeURIComponent(address)
 
   return (
     <div className="pt-20">
@@ -40,7 +38,7 @@ export function Location() {
         <div className="flex flex-col justify-center gap-6">
           <div className="flex items-start gap-3">
             <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-terracotta-600" aria-hidden="true" />
-            {loading ? <Spinner label={t('location.addressLoading')} /> : <p className="text-base text-charcoal-700">{address}</p>}
+            <p className="text-base text-charcoal-700">{address}</p>
           </div>
           <div className="flex items-start gap-3">
             <Waves className="mt-0.5 h-5 w-5 shrink-0 text-terracotta-600" aria-hidden="true" />

@@ -31,7 +31,6 @@
     "contact": "Contatti",
     "rights": "Tutti i diritti riservati.",
     "legal": "Termini, condizioni e privacy",
-    "adminAccess": "Accesso privato",
     "photoCredit": "Fotografie: {{name}}"
   },
   "hero": {
@@ -56,10 +55,7 @@
   "featuredRooms": {
     "eyebrow": "Sistemazione",
     "heading": "Camere nel pieno centro di Lloret de Mar",
-    "viewAll": "Vedi tutte le camere",
-    "loading": "Caricamento camere…",
-    "emptyTitle": "Disponibile a breve",
-    "emptyDescription": "Stiamo aggiornando la nostra offerta di alloggi. Contattaci per conoscere la disponibilità."
+    "viewAll": "Vedi tutte le camere"
   },
   "locationAdvantage": {
     "eyebrow": "Posizione",
@@ -83,8 +79,7 @@
   },
   "contactStrip": {
     "eyebrow": "Contatti",
-    "heading": "Siamo qui per aiutarti",
-    "loading": "Caricamento dei dati di contatto…"
+    "heading": "Siamo qui per aiutarti"
   },
   "roomCard": {
     "priceOnRequest": "Prezzo su richiesta",
@@ -97,10 +92,7 @@
     "eyebrow": "Sistemazione",
     "heading": "Le nostre camere",
     "intro": "Alloggio nel pieno centro di Lloret de Mar, a 3 minuti dalla spiaggia e sulla stessa via dei negozi. Verifica la disponibilità e prenota direttamente con noi.",
-    "includedTitle": "Ogni camera include",
-    "loading": "Caricamento camere…",
-    "emptyTitle": "Nessuna camera disponibile",
-    "emptyDescription": "Al momento non ci sono alloggi attivi pubblicati. Contattaci direttamente per verificare la disponibilità."
+    "includedTitle": "Ogni camera include"
   },
   "roomAmenities": {
     "bathroom": "Bagno privato completo (doccia o vasca)",
@@ -142,7 +134,6 @@
     "heading": "A due passi dalla spiaggia di Lloret de Mar",
     "body": "L'Hotel Casa Mas si trova in una pittoresca via pedonale del centro storico e commerciale di Lloret de Mar, Girona — nel cuore della Costa Brava.",
     "mapTitle": "Mappa della posizione dell'Hotel Casa Mas",
-    "addressLoading": "Caricamento indirizzo…",
     "streetAlt": "Chiesa di Sant Romà, nel centro di Lloret de Mar",
     "promenadeAlt": "Castell de Lloret",
     "nearbyTitle": "Punti di interesse nelle vicinanze",
@@ -170,9 +161,7 @@
     "goToBooking": "Vai alle prenotazioni",
     "policiesTitle": "Politiche dell'hotel",
     "hoursTitle": "Orari di reception",
-    "hoursEmpty": "Orari non disponibili al momento.",
-    "loadingContact": "Caricamento dei dati di contatto…",
-    "loadingHours": "Caricamento orari…"
+    "hoursBody": "Durante la stagione estiva, la reception è disponibile 24 ore su 24. Per qualsiasi necessità durante il soggiorno, può rivolgersi direttamente alla reception: saremo lieti di aiutarla."
   },
   "policies": {
     "checkIn": "Arrivo (check-in)",
@@ -185,22 +174,6 @@
     "parking": "Parcheggio",
     "checkInHours": "16:30 – 23:30",
     "checkOutHours": "07:00 – 11:00"
-  },
-  "businessHours": {
-    "sunday": "Domenica",
-    "monday": "Lunedì",
-    "tuesday": "Martedì",
-    "wednesday": "Mercoledì",
-    "thursday": "Giovedì",
-    "friday": "Venerdì",
-    "saturday": "Sabato",
-    "closed": "Chiuso"
-  },
-  "feedback": {
-    "loading": "Caricamento…",
-    "retry": "Riprova",
-    "loadError": "Al momento non è stato possibile caricare i dati. Riprova tra qualche istante.",
-    "configWarning": "Configurazione Supabase mancante (VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY). Il sito non può caricare dati reali finché queste variabili d'ambiente non vengono impostate."
   },
   "notFound": {
     "heading": "Pagina non trovata",

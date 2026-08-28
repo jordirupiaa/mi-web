@@ -1,8 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { CheckCircle2 } from 'lucide-react'
-import { useActiveServices } from '../hooks/useHotelData'
+import { ROOMS } from '../data/rooms'
 import { RoomCard } from '../components/rooms/RoomCard'
-import { Spinner, ErrorMessage, EmptyState } from '../components/ui/Feedback'
 import { ROOM_WIDE_IMAGE } from '../data/images'
 import { PageSeo } from '../components/shared/PageSeo'
 
@@ -10,7 +9,6 @@ const ROOM_AMENITY_KEYS = ['bathroom', 'ac', 'wifi', 'wardrobe', 'toiletries'] a
 
 export function Rooms() {
   const { t } = useTranslation()
-  const { data: services, loading, error, reload } = useActiveServices()
 
   return (
     <div className="pt-20">
@@ -47,22 +45,10 @@ export function Rooms() {
           </ul>
         </div>
 
-        <div className="mt-14">
-          {loading && <Spinner label={t('rooms.loading')} />}
-          {error && <ErrorMessage message={error} onRetry={reload} />}
-          {!loading && !error && services && services.length === 0 && (
-            <EmptyState
-              title={t('rooms.emptyTitle')}
-              description={t('rooms.emptyDescription')}
-            />
-          )}
-          {!loading && !error && services && services.length > 0 && (
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {services.map((service, index) => (
-                <RoomCard key={service.id} service={service} index={index} />
-              ))}
-            </div>
-          )}
+        <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {ROOMS.map((room, index) => (
+            <RoomCard key={room.id} room={room} index={index} />
+          ))}
         </div>
       </section>
     </div>

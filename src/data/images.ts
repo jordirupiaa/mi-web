@@ -1,26 +1,19 @@
 /**
  * Frontend-only image configuration layer.
  *
- * The `services` table has no image column, so photos can't be loaded from
- * Supabase. Real Hotel Casa Mas room photos live in `src/assets/rooms/<tipo>/`
- * — one subfolder per room type, and EVERY image file dropped into a
- * subfolder is picked up automatically at build time (via Vite's
- * `import.meta.glob`), no code changes needed. Add `02.jpg`, `03.jpg`, a
- * differently-named file, whatever — it just needs to be an image file
- * directly inside the right subfolder. See ROOM_SLUG_MATCHERS below for
- * which subfolder maps to which room.
- *
- * Rooms are matched to their gallery by name (not by list position/index) —
- * this way the right photos always follow the right room even if the admin
- * reorders, renames slightly, or changes prices (which changes sort order).
- * Any room name that doesn't match a known folder falls back to another
- * room's real photo (never a stock/external image) so a brand-new room type
- * never shows a broken image.
+ * Real Hotel Casa Mas room photos live in `src/assets/rooms/<slug>/` — one
+ * subfolder per room type (slug matches `RoomSlug` in src/data/rooms.ts),
+ * and EVERY image file dropped into a subfolder is picked up automatically
+ * at build time (via Vite's `import.meta.glob`), no code changes needed.
+ * Add `02.jpg`, `03.jpg`, a differently-named file, whatever — it just
+ * needs to be an image file directly inside the right subfolder.
  *
  * Every image referenced in this file — rooms and location alike — is a
  * real photo supplied by the hotel. There is no stock/internet photography
  * anywhere in this project.
  */
+
+import type { RoomSlug } from './rooms'
 
 // Eagerly import every image under src/assets/rooms/<slug>/*, whatever its
 // name — Vite resolves this at build time. Keys look like
@@ -40,32 +33,16 @@ for (const path in roomImageModules) {
 // Sort each room's photos by filename so 01.jpg, 02.jpg... show in order.
 for (const slug in ROOM_GALLERIES) ROOM_GALLERIES[slug].sort()
 
-/**
- * Which folder under src/assets/rooms/ belongs to which room. Each pattern
- * accepts both the original English service name and the Spanish name it
- * may be renamed to in Supabase, so matching survives either.
- */
-const ROOM_SLUG_MATCHERS: Array<{ pattern: RegExp; slug: string }> = [
-  { pattern: /twin.*window|twin.*ventana/i, slug: 'twin-ventana' },
-  { pattern: /twin.*balcony|twin.*balc[oó]n/i, slug: 'twin-balcon' },
-  { pattern: /single|individual/i, slug: 'individual' },
-  { pattern: /triple/i, slug: 'triple' },
-  { pattern: /quadruple|cu[aá]druple/i, slug: 'cuadruple' },
-  { pattern: /penthouse|[aá]tico/i, slug: 'atico' },
-]
-
 /** Every real room photo, flattened — used only as a last-resort fallback below. */
 const ALL_ROOM_IMAGES: string[] = Object.values(ROOM_GALLERIES).flat()
 
 /**
  * All real photos for a room, in order. Always returns at least one image —
- * for a room name that doesn't match a known folder (e.g. a brand-new room
- * type added in Supabase before its own photos are uploaded), it falls back
- * to another room's real photo rather than a stock image.
+ * if a slug's folder is ever empty, it falls back to another room's real
+ * photo rather than a stock image.
  */
-export function roomGalleryForService(name: string, index: number): string[] {
-  const match = ROOM_SLUG_MATCHERS.find((m) => m.pattern.test(name))
-  const gallery = match ? ROOM_GALLERIES[match.slug] : undefined
+export function roomGalleryForSlug(slug: RoomSlug, index: number): string[] {
+  const gallery = ROOM_GALLERIES[slug]
   if (gallery && gallery.length > 0) return gallery
   if (ALL_ROOM_IMAGES.length > 0) return [ALL_ROOM_IMAGES[index % ALL_ROOM_IMAGES.length]]
   return []

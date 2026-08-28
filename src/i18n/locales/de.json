@@ -31,7 +31,6 @@
     "contact": "Kontakt",
     "rights": "Alle Rechte vorbehalten.",
     "legal": "AGB und Datenschutz",
-    "adminAccess": "Privater Zugang",
     "photoCredit": "Fotos: {{name}}"
   },
   "hero": {
@@ -56,10 +55,7 @@
   "featuredRooms": {
     "eyebrow": "Unterkunft",
     "heading": "Zimmer mitten im Zentrum von Lloret de Mar",
-    "viewAll": "Alle Zimmer ansehen",
-    "loading": "Zimmer werden geladen…",
-    "emptyTitle": "Demnächst verfügbar",
-    "emptyDescription": "Wir aktualisieren gerade unser Zimmerangebot. Kontaktieren Sie uns für die Verfügbarkeit."
+    "viewAll": "Alle Zimmer ansehen"
   },
   "locationAdvantage": {
     "eyebrow": "Lage",
@@ -83,8 +79,7 @@
   },
   "contactStrip": {
     "eyebrow": "Kontakt",
-    "heading": "Wir helfen Ihnen gerne",
-    "loading": "Kontaktdaten werden geladen…"
+    "heading": "Wir helfen Ihnen gerne"
   },
   "roomCard": {
     "priceOnRequest": "Preis auf Anfrage",
@@ -97,10 +92,7 @@
     "eyebrow": "Unterkunft",
     "heading": "Unsere Zimmer",
     "intro": "Unterkunft mitten im Zentrum von Lloret de Mar, 3 Minuten vom Strand und in derselben Straße wie die Geschäfte. Verfügbarkeit prüfen und direkt bei uns buchen.",
-    "includedTitle": "Jedes Zimmer beinhaltet",
-    "loading": "Zimmer werden geladen…",
-    "emptyTitle": "Keine Zimmer verfügbar",
-    "emptyDescription": "Derzeit sind keine aktiven Unterkünfte veröffentlicht. Kontaktieren Sie uns direkt für die Verfügbarkeit."
+    "includedTitle": "Jedes Zimmer beinhaltet"
   },
   "roomAmenities": {
     "bathroom": "Komplettes eigenes Bad (Dusche oder Badewanne)",
@@ -142,7 +134,6 @@
     "heading": "Nur wenige Schritte vom Strand von Lloret de Mar",
     "body": "Das Hotel Casa Mas liegt in einer malerischen Fußgängerstraße im historischen und kommerziellen Zentrum von Lloret de Mar, Girona — mitten im Herzen der Costa Brava.",
     "mapTitle": "Standortkarte des Hotel Casa Mas",
-    "addressLoading": "Adresse wird geladen…",
     "streetAlt": "Kirche Sant Romà im Zentrum von Lloret de Mar",
     "promenadeAlt": "Castell de Lloret",
     "nearbyTitle": "Sehenswürdigkeiten in der Nähe",
@@ -170,9 +161,7 @@
     "goToBooking": "Zur Buchung",
     "policiesTitle": "Hotelrichtlinien",
     "hoursTitle": "Rezeptionszeiten",
-    "hoursEmpty": "Öffnungszeiten derzeit nicht verfügbar.",
-    "loadingContact": "Kontaktdaten werden geladen…",
-    "loadingHours": "Öffnungszeiten werden geladen…"
+    "hoursBody": "In der Sommersaison ist die Rezeption rund um die Uhr besetzt. Bei allem, was Sie während Ihres Aufenthalts benötigen, wenden Sie sich bitte direkt an die Rezeption — wir helfen Ihnen gerne weiter."
   },
   "policies": {
     "checkIn": "Anreise (Check-in)",
@@ -185,22 +174,6 @@
     "parking": "Parken",
     "checkInHours": "16:30 – 23:30 Uhr",
     "checkOutHours": "07:00 – 11:00 Uhr"
-  },
-  "businessHours": {
-    "sunday": "Sonntag",
-    "monday": "Montag",
-    "tuesday": "Dienstag",
-    "wednesday": "Mittwoch",
-    "thursday": "Donnerstag",
-    "friday": "Freitag",
-    "saturday": "Samstag",
-    "closed": "Geschlossen"
-  },
-  "feedback": {
-    "loading": "Wird geladen…",
-    "retry": "Erneut versuchen",
-    "loadError": "Die Daten konnten gerade nicht geladen werden. Bitte versuchen Sie es in Kürze erneut.",
-    "configWarning": "Die Supabase-Konfiguration fehlt (VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY). Die Website kann keine echten Daten laden, bis diese Umgebungsvariablen gesetzt sind."
   },
   "notFound": {
     "heading": "Seite nicht gefunden",

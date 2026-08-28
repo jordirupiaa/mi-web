@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Mail, MapPin, Phone } from 'lucide-react'
-import { useBusinessSettings } from '../../hooks/useHotelData'
+import { BUSINESS_INFO } from '../../data/businessInfo'
 import { buildDirectBookUrl } from '../../utils/directBook'
 import { formatPhoneDisplay } from '../../utils/formatPhone'
 
@@ -13,12 +13,7 @@ const PHOTOGRAPHER_NAME = 'Leidy Giraldo'
 
 export function Footer() {
   const { t } = useTranslation()
-  const { data: settings } = useBusinessSettings()
   const year = new Date().getFullYear()
-
-  const address = settings?.business_address ?? 'Lloret de Mar, Girona, España'
-  const phone = settings?.business_phone
-  const email = settings?.business_email
 
   return (
     <footer className="border-t border-sand-200 bg-charcoal-900 text-sand-100">
@@ -48,20 +43,16 @@ export function Footer() {
           <ul className="mt-4 space-y-3 text-sm text-sand-200/80">
             <li className="flex items-start gap-2">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-terracotta-300" aria-hidden="true" />
-              <span>{address}</span>
+              <span>{BUSINESS_INFO.address}</span>
             </li>
-            {phone && (
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 shrink-0 text-terracotta-300" aria-hidden="true" />
-                <a href={`tel:${phone}`} className="hover:text-terracotta-300">{formatPhoneDisplay(phone)}</a>
-              </li>
-            )}
-            {email && (
-              <li className="flex items-center gap-2">
-                <Mail className="h-4 w-4 shrink-0 text-terracotta-300" aria-hidden="true" />
-                <a href={`mailto:${email}`} className="hover:text-terracotta-300">{email}</a>
-              </li>
-            )}
+            <li className="flex items-center gap-2">
+              <Phone className="h-4 w-4 shrink-0 text-terracotta-300" aria-hidden="true" />
+              <a href={`tel:${BUSINESS_INFO.phone}`} className="hover:text-terracotta-300">{formatPhoneDisplay(BUSINESS_INFO.phone)}</a>
+            </li>
+            <li className="flex items-center gap-2">
+              <Mail className="h-4 w-4 shrink-0 text-terracotta-300" aria-hidden="true" />
+              <a href={`mailto:${BUSINESS_INFO.email}`} className="hover:text-terracotta-300">{BUSINESS_INFO.email}</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -75,9 +66,6 @@ export function Footer() {
           <div className="flex items-center gap-5">
             <Link to="/legal" className="hover:text-terracotta-300">
               {t('footer.legal')}
-            </Link>
-            <Link to="/admin/login" className="hover:text-terracotta-300">
-              {t('footer.adminAccess')}
             </Link>
           </div>
         </div>

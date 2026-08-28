@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { MessageCircle, Send, X } from 'lucide-react'
 import { FAQ_TOPICS, type FaqLanguage } from '../../data/faq'
 import { findBestMatch, interpolate, type MatchableEntry } from '../../utils/faqMatcher'
-import { useBusinessSettings } from '../../hooks/useHotelData'
+import { BUSINESS_INFO } from '../../data/businessInfo'
 import { formatPhoneDisplay } from '../../utils/formatPhone'
 
 interface ChatMessage {
@@ -21,7 +21,6 @@ function toFaqLanguage(code: string | undefined): FaqLanguage {
 
 export function ChatWidget() {
   const { t, i18n } = useTranslation()
-  const { data: settings } = useBusinessSettings()
   const lang = toFaqLanguage(i18n.resolvedLanguage)
 
   const [open, setOpen] = useState(false)
@@ -31,9 +30,9 @@ export function ChatWidget() {
   const scrollRef = useRef<HTMLDivElement>(null)
 
   const contactValues = {
-    address: settings?.business_address ?? 'Carrer de Sant Pere 50, 17310 Lloret de Mar, Girona',
-    phone: settings?.business_phone ? formatPhoneDisplay(settings.business_phone) : '',
-    email: settings?.business_email ?? '',
+    address: BUSINESS_INFO.address,
+    phone: formatPhoneDisplay(BUSINESS_INFO.phone),
+    email: BUSINESS_INFO.email,
   }
 
   // Seed the welcome message once, the first time the widget is opened.
