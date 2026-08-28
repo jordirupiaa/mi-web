@@ -1,0 +1,223 @@
+{
+  "seo": {
+    "homeTitle": "Hotel Casa Mas | Hotel en el centro de Lloret de Mar",
+    "homeDescription": "Hotel Casa Mas, en la calle principal del centro de Lloret de Mar, a 3 minutos de la playa y a 5 de la vida nocturna. Reserve directamente en la Costa Brava.",
+    "roomsTitle": "Habitaciones | Hotel Casa Mas, Lloret de Mar",
+    "roomsDescription": "Descubra las habitaciones de Hotel Casa Mas: individuales, dobles, triples y cuádruples en pleno centro de Lloret de Mar, a un paso de la playa y las tiendas.",
+    "aboutTitle": "El Hotel | Hotel Casa Mas, Lloret de Mar",
+    "aboutDescription": "Conozca Hotel Casa Mas, en Carrer de Sant Pere, el corazón histórico y comercial de Lloret de Mar. Instalaciones, servicios y ubicación inmejorable.",
+    "locationTitle": "Ubicación | Hotel Casa Mas, Lloret de Mar",
+    "locationDescription": "Hotel Casa Mas se sitúa en el centro peatonal de Lloret de Mar: playa a 3 minutos, discotecas a 5, y los principales puntos de interés a pie.",
+    "contactTitle": "Contacto | Hotel Casa Mas, Lloret de Mar",
+    "contactDescription": "Contacte con Hotel Casa Mas: dirección, teléfono, correo electrónico y horario de recepción. Reserve directamente con nosotros.",
+    "legalTitle": "Aviso legal y política de privacidad | Hotel Casa Mas",
+    "legalDescription": "Condiciones de cancelación, política de privacidad y aviso legal de Hotel Casa Mas (ALBANTA HOSPITALITY S.L.)."
+  },
+  "nav": {
+    "home": "Inicio",
+    "rooms": "Habitaciones",
+    "about": "El Hotel",
+    "location": "Ubicación",
+    "contact": "Contacto",
+    "bookNow": "Reservar ahora",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "homeAria": "Hotel Casa Mas — inicio"
+  },
+  "footer": {
+    "tagline": "En el centro de Lloret de Mar, en la calle principal: tiendas a la puerta, playa a tres minutos, discotecas a cinco.",
+    "explore": "Explorar",
+    "book": "Reservar",
+    "contact": "Contacto",
+    "rights": "Todos los derechos reservados.",
+    "legal": "Términos, condiciones y privacidad",
+    "adminAccess": "Acceso privado",
+    "photoCredit": "Fotografías: {{name}}"
+  },
+  "hero": {
+    "eyebrow": "Lloret de Mar · Costa Brava",
+    "tagline": "En el corazón de Lloret de Mar, en su calle principal — a tres minutos de la playa, a cinco de la marcha nocturna. Así de cerca queda todo lo que hace de Lloret un destino único."
+  },
+  "bookingWidget": {
+    "checkIn": "Entrada",
+    "checkOut": "Salida",
+    "guests": "Huéspedes",
+    "guestSingular": "huésped",
+    "guestPlural": "huéspedes",
+    "submit": "Reservar ahora",
+    "errorDates": "Seleccione las fechas de entrada y salida.",
+    "errorOrder": "La fecha de salida debe ser posterior a la de entrada."
+  },
+  "intro": {
+    "eyebrow": "Bienvenidos",
+    "heading": "Todo Lloret, a un paso de tu puerta",
+    "body": "En el Hotel Casa Mas la ubicación es nuestra mejor cualidad. Situado en la céntrica calle peatonal Sant Pere, te situamos a pie de puerta de las mejores tiendas, a tres minutos caminando del mar y a cinco minutos de las principales discotecas. Olvídate del vehículo y disfruta de la esencia de Lloret de Mar desde el corazón del centro."
+  },
+  "featuredRooms": {
+    "eyebrow": "Alojamiento",
+    "heading": "Habitaciones en pleno centro de Lloret de Mar",
+    "viewAll": "Ver todas las habitaciones",
+    "loading": "Cargando habitaciones…",
+    "emptyTitle": "Próximamente disponible",
+    "emptyDescription": "Estamos actualizando nuestra oferta de alojamiento. Contáctenos para conocer disponibilidad."
+  },
+  "locationAdvantage": {
+    "eyebrow": "Ubicación",
+    "heading": "En el corazón de Lloret de Mar",
+    "body": "Hotel Casa Mas está en la calle principal del centro de Lloret de Mar, con todo lo que hace de este destino un lugar tan turístico y animado al alcance de la mano.",
+    "point1Description": "Un paseo corto separa el hotel de la playa de Lloret y su paseo marítimo.",
+    "point2Title": "En la calle principal",
+    "point2Description": "Tiendas y comercios en la misma calle peatonal donde está el hotel.",
+    "point3Title": "A 5 minutos de las discotecas",
+    "point3Description": "La zona de ocio nocturno de Lloret, a un corto paseo del hotel.",
+    "cta": "Ver ubicación y cómo llegar"
+  },
+  "amenities": {
+    "eyebrow": "Instalaciones y servicios",
+    "heading": "Todo lo necesario para una estancia sencilla y cuidada"
+  },
+  "cta": {
+    "eyebrow": "Reserve directamente",
+    "heading": "Su estancia mediterránea le espera en Lloret de Mar",
+    "button": "Reservar ahora"
+  },
+  "contactStrip": {
+    "eyebrow": "Contacto",
+    "heading": "Estamos para ayudarle",
+    "loading": "Cargando datos de contacto…"
+  },
+  "roomCard": {
+    "priceOnRequest": "Precio a consultar",
+    "perNight": "/ noche",
+    "book": "Reservar",
+    "interiorAlt": "Interior de {{name}}"
+  },
+  "rooms": {
+    "heroAlt": "Interior de una de las habitaciones de Hotel Casa Mas",
+    "eyebrow": "Alojamiento",
+    "heading": "Nuestras habitaciones",
+    "intro": "Alojamiento en pleno centro de Lloret de Mar, a 3 minutos de la playa y en la misma calle que las tiendas. Consulte disponibilidad y reserve directamente con nosotros.",
+    "includedTitle": "Todas las habitaciones incluyen",
+    "loading": "Cargando habitaciones…",
+    "emptyTitle": "Sin habitaciones disponibles",
+    "emptyDescription": "En este momento no hay alojamientos activos publicados. Contáctenos directamente para consultar disponibilidad."
+  },
+  "roomAmenities": {
+    "bathroom": "Baño privado completo (ducha o bañera)",
+    "ac": "Aire acondicionado y calefacción",
+    "wifi": "Wi-Fi gratuita de alta velocidad",
+    "wardrobe": "Armario / ropero",
+    "toiletries": "Artículos de aseo gratuitos"
+  },
+  "hotelFacilities": {
+    "garden": "Patio interior ajardinado",
+    "terrace": "Terraza solárium",
+    "wifi": "Wi-Fi gratis en todo el establecimiento",
+    "elevator": "Ascensor",
+    "reception": "Recepción con información turística",
+    "luggage": "Servicio de guardaequipajes",
+    "transfer": "Servicio de traslado (bajo petición, de pago)",
+    "vending": "Máquina expendedora de comida y café"
+  },
+  "about": {
+    "eyebrow": "El Hotel",
+    "heading": "En el corazón del casco histórico de Lloret de Mar",
+    "description": "Hotel Casa Mas se sitúa en el corazón de Lloret de Mar, en Carrer de Sant Pere, la calle principal, comercial y peatonal del centro histórico. Aquí todo queda cerca: la playa, a tres minutos andando; las tiendas, en la misma calle; la zona de discotecas, a cinco minutos a pie. Un punto de partida inmejorable para disfrutar de todo lo que ofrece un destino tan turístico y animado como Lloret de Mar.",
+    "roomsLabel": "habitaciones",
+    "galleryAlt1": "Habitación Doble con balcón de Hotel Casa Mas",
+    "galleryAlt2": "Habitación Triple de Hotel Casa Mas",
+    "galleryAlt3": "Habitación Doble con ventana de Hotel Casa Mas",
+    "closeTitle": "Todo a un paso",
+    "quickFact1": "3 min a pie a la playa",
+    "quickFact2": "Tiendas en la misma calle",
+    "quickFact3": "5 min a las discotecas",
+    "facilitiesTitle": "Instalaciones y servicios"
+  },
+  "hotelFacts": {
+    "beachDistance": "A 100–300 m de la playa (unos 3 minutos a pie)",
+    "noParking": "El hotel no dispone de parking propio."
+  },
+  "location": {
+    "eyebrow": "Ubicación",
+    "heading": "A pasos de la playa de Lloret de Mar",
+    "body": "Hotel Casa Mas se sitúa en una pintoresca calle peatonal del centro histórico y comercial de Lloret de Mar, Girona — en pleno corazón de la Costa Brava.",
+    "mapTitle": "Mapa de ubicación de Hotel Casa Mas",
+    "addressLoading": "Cargando dirección…",
+    "streetAlt": "Iglesia de Sant Romà, en el centro de Lloret de Mar",
+    "promenadeAlt": "Castell de Lloret",
+    "nearbyTitle": "Puntos de interés cercanos",
+    "nightlifeAlt": "Ambiente nocturno en el centro de Lloret de Mar",
+    "nightlifeTitle": "Ambiente y vida nocturna",
+    "nightlifeBody": "Para quien busque también algo de animación, el centro de Lloret de Mar ofrece ambiente y vida nocturna a solo 5 minutos andando del hotel."
+  },
+  "nearbyPlaces": {
+    "beach": "Playa de Lloret",
+    "beachDistance": "250 m — 3 min a pie",
+    "church": "Iglesia de Sant Romà",
+    "churchDistance": "300 m",
+    "casino": "Gran Casino Costa Brava",
+    "casinoDistance": "500 m",
+    "busStation": "Estación Central de Autobuses",
+    "busStationDistance": "400 m",
+    "museum": "Museo del Mar",
+    "museumDistance": "500 m"
+  },
+  "contact": {
+    "eyebrow": "Contacto",
+    "heading": "Estamos para ayudarle",
+    "body": "Para reservar, utilice nuestro motor de reservas directo. Para cualquier otra consulta, puede contactarnos directamente por teléfono o correo electrónico.",
+    "detailsTitle": "Datos de contacto",
+    "goToBooking": "Ir a reservas",
+    "policiesTitle": "Políticas del hotel",
+    "hoursTitle": "Horario de recepción",
+    "hoursEmpty": "Horario no disponible en este momento.",
+    "loadingContact": "Cargando datos de contacto…",
+    "loadingHours": "Cargando horario…"
+  },
+  "policies": {
+    "checkIn": "Entrada (check-in)",
+    "checkOut": "Salida (check-out)",
+    "pets": "Mascotas",
+    "petsValue": "No se admiten mascotas",
+    "smoking": "Fumar",
+    "smokingValue": "Establecimiento 100% libre de humo",
+    "cards": "Tarjetas aceptadas",
+    "parking": "Parking",
+    "checkInHours": "16:30 – 23:30 h",
+    "checkOutHours": "07:00 – 11:00 h"
+  },
+  "businessHours": {
+    "sunday": "Domingo",
+    "monday": "Lunes",
+    "tuesday": "Martes",
+    "wednesday": "Miércoles",
+    "thursday": "Jueves",
+    "friday": "Viernes",
+    "saturday": "Sábado",
+    "closed": "Cerrado"
+  },
+  "feedback": {
+    "loading": "Cargando…",
+    "retry": "Reintentar",
+    "loadError": "No se pudieron cargar los datos en este momento. Inténtelo de nuevo en unos instantes.",
+    "configWarning": "Falta la configuración de Supabase (VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY). El sitio no puede cargar datos reales hasta que se configuren estas variables de entorno."
+  },
+  "notFound": {
+    "heading": "Página no encontrada",
+    "body": "La página que busca no existe o se ha movido.",
+    "cta": "Volver al inicio"
+  },
+  "languageSwitcher": {
+    "label": "Idioma"
+  },
+  "chat": {
+    "openLabel": "Abrir chat de ayuda",
+    "closeLabel": "Cerrar chat",
+    "title": "¿En qué podemos ayudarte?",
+    "subtitle": "Asistente de Hotel Casa Mas",
+    "welcome": "¡Bienvenido/a a Hotel Casa Mas! Es un placer atenderle. Estoy aquí para resolver cualquier duda sobre su estancia, servicios o reservas. ¿En qué le puedo asistir?",
+    "inputPlaceholder": "Escriba su pregunta…",
+    "send": "Enviar",
+    "fallback": "Disculpe, no he logrado entender del todo su consulta. Para responderle con precisión, puede probar preguntando sobre check-in, parking, mascotas, wifi o política de cancelación. Si prefiere un trato más personal, también puede contactarnos directamente al {{phone}} o {{email}}."
+  }
+}

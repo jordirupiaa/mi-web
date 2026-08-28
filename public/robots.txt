@@ -1,0 +1,11 @@
+# Hotel Casa Mas — robots.txt
+# NOTE: the site currently runs locally only (no public domain yet). Update
+# the Sitemap line below with the real production domain before/when this
+# site is deployed publicly, so it points at the actual sitemap location.
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/login
+
+Sitemap: https://www.hotelcasamas.com/sitemap.xml
