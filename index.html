@@ -19,21 +19,29 @@
     <meta name="description" content="Hotel Casa Mas — en pleno centro de Lloret de Mar, en la calle principal, a 3 minutos de la playa y a 5 de la zona de ocio nocturno. Reserve su estancia en la Costa Brava." />
     <title>Hotel Casa Mas | Lloret de Mar</title>
     <!--
-      Canonical URL and placeholder production domain: update every
-      https://www.hotelcasamas.com reference on this page (and in
-      public/robots.txt and public/sitemap.xml) to the real domain once the
-      site is deployed there — until then this only matters once search
-      engines/crawlers can reach it.
+      Canonical URL, hreflang alternates, and placeholder production domain:
+      this file is only the SOURCE TEMPLATE — `npm run build`'s prerender
+      step (scripts/prerender.mjs) generates the real per-page, per-language
+      versions of this tag (plus the matching hreflang <link>s and Open
+      Graph/Twitter tags below) into dist/, one per page × language
+      combination, from a copy of this same template. Editing the values
+      here only changes what a build without the prerender step would show
+      (i.e. what this homepage-in-Spanish placeholder looks like before
+      that step runs) — the shipped result always comes from prerender.mjs.
+      Update every https://www.hotelcasamas.com reference on this page (and
+      in public/robots.txt and prerender.mjs's SITE_URL) to the real domain
+      once the site is deployed there — until then this only matters once
+      search engines/crawlers can reach it.
     -->
     <link rel="canonical" href="https://www.hotelcasamas.com/" />
 
     <!--
       Open Graph / Twitter Card: shown when this page is shared on social
-      media or messaging apps. Since this is a single-page app with one
-      static index.html (no server-side rendering per route), these tags
-      are necessarily the same for every page/route — they describe the
-      site as a whole, using the homepage content. Update og:url/og:image
-      to the real production domain once the site is deployed publicly.
+      media or messaging apps. This block is the fallback the homepage
+      shows if it's ever served without the prerender step having run —
+      every prerendered page gets its own og:title/description/url/locale
+      overwritten with real, page-specific values by scripts/prerender.mjs
+      (see the note on the canonical link above).
     -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Hotel Casa Mas" />

@@ -87,6 +87,12 @@
     "book": "Buchen",
     "interiorAlt": "Innenansicht von {{name}}"
   },
+  "roomGallery": {
+    "prevPhoto": "Vorheriges Foto",
+    "nextPhoto": "Nächstes Foto",
+    "photoNumber": "Foto {{n}}",
+    "close": "Schließen"
+  },
   "rooms": {
     "heroAlt": "Innenansicht eines Zimmers im Hotel Casa Mas",
     "eyebrow": "Unterkunft",

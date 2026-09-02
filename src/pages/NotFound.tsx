@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Button } from '../components/ui/Button'
+import { localizedPath } from '../utils/localizedPath'
 
 export function NotFound() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const home = localizedPath('/', (i18n.resolvedLanguage ?? 'es') as Parameters<typeof localizedPath>[1])
   return (
     <div className="flex min-h-[70vh] flex-col items-center justify-center px-6 pt-20 text-center">
       <p className="font-display text-6xl text-terracotta-500">404</p>
@@ -11,7 +13,7 @@ export function NotFound() {
       <p className="mt-2 max-w-sm text-sm text-charcoal-500">
         {t('notFound.body')}
       </p>
-      <Link to="/" className="mt-6">
+      <Link to={home} className="mt-6">
         <Button variant="secondary">{t('notFound.cta')}</Button>
       </Link>
     </div>

@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { ROOMS } from '../../data/rooms'
 import { RoomCard } from '../rooms/RoomCard'
+import { localizedPath } from '../../utils/localizedPath'
 
 export function FeaturedRooms() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const roomsHref = localizedPath('/habitaciones', (i18n.resolvedLanguage ?? 'es') as Parameters<typeof localizedPath>[1])
 
   return (
     <section className="bg-sand-50 py-24">
@@ -17,7 +19,7 @@ export function FeaturedRooms() {
             </h2>
           </div>
           <Link
-            to="/habitaciones"
+            to={roomsHref}
             className="text-sm font-semibold text-terracotta-700 underline underline-offset-4 hover:text-terracotta-600"
           >
             {t('featuredRooms.viewAll')}

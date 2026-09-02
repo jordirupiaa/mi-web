@@ -87,6 +87,12 @@
     "book": "Réserver",
     "interiorAlt": "Intérieur de {{name}}"
   },
+  "roomGallery": {
+    "prevPhoto": "Photo précédente",
+    "nextPhoto": "Photo suivante",
+    "photoNumber": "Photo {{n}}",
+    "close": "Fermer"
+  },
   "rooms": {
     "heroAlt": "Intérieur d'une des chambres de l'Hôtel Casa Mas",
     "eyebrow": "Hébergement",

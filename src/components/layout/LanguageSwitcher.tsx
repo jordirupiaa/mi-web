@@ -1,10 +1,14 @@
 import { useState, useRef, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Globe } from 'lucide-react'
 import { SUPPORTED_LANGUAGES } from '../../i18n'
+import { localizedPath } from '../../utils/localizedPath'
 
 export function LanguageSwitcher({ transparent }: { transparent: boolean }) {
   const { t, i18n } = useTranslation()
+  const location = useLocation()
+  const navigate = useNavigate()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
 
@@ -18,8 +22,14 @@ export function LanguageSwitcher({ transparent }: { transparent: boolean }) {
     return () => document.removeEventListener('mousedown', onClickOutside)
   }, [])
 
+  // Navigates to the equivalent /xx/-prefixed (or unprefixed, for Spanish)
+  // URL for the chosen language — not just changing i18n's in-memory
+  // language — so the visitor ends up on a real, shareable, crawlable URL
+  // for that language instead of an English page still sitting at a
+  // Spanish address. LangRoute (mounted on the /en, /fr... routes) picks up
+  // the actual language switch once react-router lands on that new path.
   const handleSelect = (code: string) => {
-    i18n.changeLanguage(code)
+    navigate(localizedPath(location.pathname, code as (typeof SUPPORTED_LANGUAGES)[number]['code']))
     setOpen(false)
   }
 

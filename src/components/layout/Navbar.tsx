@@ -3,22 +3,25 @@ import { Link, NavLink, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Menu, X } from 'lucide-react'
 import { buildDirectBookUrl } from '../../utils/directBook'
+import { localizedPath, stripLanguagePrefix } from '../../utils/localizedPath'
 import { LanguageSwitcher } from './LanguageSwitcher'
 
 export function Navbar() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const location = useLocation()
-  const isHome = location.pathname === '/'
+  const isHome = stripLanguagePrefix(location.pathname) === '/'
   const transparent = isHome && !scrolled && !open
+  const lang = i18n.resolvedLanguage ?? 'es'
+  const path = (bare: string) => localizedPath(bare, lang as Parameters<typeof localizedPath>[1])
 
   const LINKS = [
-    { to: '/', label: t('nav.home') },
-    { to: '/habitaciones', label: t('nav.rooms') },
-    { to: '/nosotros', label: t('nav.about') },
-    { to: '/ubicacion', label: t('nav.location') },
-    { to: '/contacto', label: t('nav.contact') },
+    { to: path('/'), label: t('nav.home') },
+    { to: path('/habitaciones'), label: t('nav.rooms') },
+    { to: path('/nosotros'), label: t('nav.about') },
+    { to: path('/ubicacion'), label: t('nav.location') },
+    { to: path('/contacto'), label: t('nav.contact') },
   ]
 
   useEffect(() => {
@@ -39,7 +42,7 @@ export function Navbar() {
       }`}
     >
       <nav className="container-hotel flex h-20 items-center justify-between" aria-label="Principal">
-        <Link to="/" className="flex flex-col leading-tight" aria-label={t('nav.homeAria')}>
+        <Link to={path('/')} className="flex flex-col leading-tight" aria-label={t('nav.homeAria')}>
           <span
             className={`font-display text-2xl tracking-wide ${transparent ? 'text-warmwhite' : 'text-charcoal-800'}`}
           >
@@ -59,7 +62,7 @@ export function Navbar() {
             <NavLink
               key={link.to}
               to={link.to}
-              end={link.to === '/'}
+              end={link.to === path('/')}
               className={({ isActive }) =>
                 `text-sm font-medium tracking-wide transition-colors ${
                   transparent
@@ -113,7 +116,7 @@ export function Navbar() {
               <NavLink
                 key={link.to}
                 to={link.to}
-                end={link.to === '/'}
+                end={link.to === path('/')}
                 className={({ isActive }) =>
                   `rounded-lg px-3 py-3 text-base font-medium ${
                     isActive ? 'bg-sand-100 text-terracotta-600' : 'text-charcoal-700'

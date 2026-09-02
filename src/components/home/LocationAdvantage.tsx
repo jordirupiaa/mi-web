@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Footprints, Music, Waves } from 'lucide-react'
 import { BEACH_IMAGES, HERO_IMAGE } from '../../data/images'
+import { localizedPath } from '../../utils/localizedPath'
 
 export function LocationAdvantage() {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
+  const locationHref = localizedPath('/ubicacion', (i18n.resolvedLanguage ?? 'es') as Parameters<typeof localizedPath>[1])
 
   const POINTS = [
     { icon: Waves, title: t('hotelFacts.beachDistance'), description: t('locationAdvantage.point1Description') },
@@ -38,7 +40,7 @@ export function LocationAdvantage() {
         </ul>
 
         <Link
-          to="/ubicacion"
+          to={locationHref}
           className="mt-8 inline-flex text-sm font-semibold text-terracotta-700 underline underline-offset-4 hover:text-terracotta-600"
         >
           {t('locationAdvantage.cta')}

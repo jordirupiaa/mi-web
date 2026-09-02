@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type TouchEvent } from 'react'
 import { createPortal } from 'react-dom'
+import { useTranslation } from 'react-i18next'
 import { ChevronLeft, ChevronRight, Expand, X } from 'lucide-react'
 
 interface RoomGalleryProps {
@@ -24,6 +25,7 @@ interface RoomGalleryProps {
 const SWIPE_THRESHOLD_PX = 40
 
 export function RoomGallery({ images, alt }: RoomGalleryProps) {
+  const { t } = useTranslation()
   const [index, setIndex] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const hasMultiple = images.length > 1
@@ -97,7 +99,7 @@ export function RoomGallery({ images, alt }: RoomGalleryProps) {
                 e.stopPropagation()
                 goTo(index - 1)
               }}
-              aria-label="Foto anterior"
+              aria-label={t('roomGallery.prevPhoto')}
               className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-charcoal-900/50 text-warmwhite opacity-100 transition-opacity md:opacity-0 md:group-hover/gallery:opacity-100"
             >
               <ChevronLeft className="h-5 w-5" aria-hidden="true" />
@@ -108,7 +110,7 @@ export function RoomGallery({ images, alt }: RoomGalleryProps) {
                 e.stopPropagation()
                 goTo(index + 1)
               }}
-              aria-label="Foto siguiente"
+              aria-label={t('roomGallery.nextPhoto')}
               className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-charcoal-900/50 text-warmwhite opacity-100 transition-opacity md:opacity-0 md:group-hover/gallery:opacity-100"
             >
               <ChevronRight className="h-5 w-5" aria-hidden="true" />
@@ -123,7 +125,7 @@ export function RoomGallery({ images, alt }: RoomGalleryProps) {
                     e.stopPropagation()
                     setIndex(i)
                   }}
-                  aria-label={`Foto ${i + 1}`}
+                  aria-label={t('roomGallery.photoNumber', { n: i + 1 })}
                   aria-current={i === index}
                   className={`h-1.5 rounded-full transition-all ${
                     i === index ? 'w-4 bg-warmwhite' : 'w-1.5 bg-warmwhite/60'
@@ -153,7 +155,7 @@ export function RoomGallery({ images, alt }: RoomGalleryProps) {
             <button
               type="button"
               onClick={() => setLightboxOpen(false)}
-              aria-label="Cerrar"
+              aria-label={t('roomGallery.close')}
               className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-warmwhite/10 text-warmwhite transition-colors hover:bg-warmwhite/20"
             >
               <X className="h-5 w-5" aria-hidden="true" />
@@ -170,7 +172,7 @@ export function RoomGallery({ images, alt }: RoomGalleryProps) {
                 <button
                   type="button"
                   onClick={() => goTo(index - 1)}
-                  aria-label="Foto anterior"
+                  aria-label={t('roomGallery.prevPhoto')}
                   className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-warmwhite/10 text-warmwhite transition-colors hover:bg-warmwhite/20 sm:left-6"
                 >
                   <ChevronLeft className="h-6 w-6" aria-hidden="true" />
@@ -178,7 +180,7 @@ export function RoomGallery({ images, alt }: RoomGalleryProps) {
                 <button
                   type="button"
                   onClick={() => goTo(index + 1)}
-                  aria-label="Foto siguiente"
+                  aria-label={t('roomGallery.nextPhoto')}
                   className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-warmwhite/10 text-warmwhite transition-colors hover:bg-warmwhite/20 sm:right-6"
                 >
                   <ChevronRight className="h-6 w-6" aria-hidden="true" />
