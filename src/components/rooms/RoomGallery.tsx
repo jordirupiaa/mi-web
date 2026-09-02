@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState, type TouchEvent } from 'react'
 import { createPortal } from 'react-dom'
 import { ChevronLeft, ChevronRight, Expand, X } from 'lucide-react'
 
@@ -20,12 +20,28 @@ interface RoomGalleryProps {
  * ancestor instead, which is what caused the "opens tiny/glitches while
  * hovering" bug. Portaling to <body> sidesteps that entirely.
  */
+/** Minimum horizontal drag, in pixels, before a touch gesture counts as a swipe. */
+const SWIPE_THRESHOLD_PX = 40
+
 export function RoomGallery({ images, alt }: RoomGalleryProps) {
   const [index, setIndex] = useState(0)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const hasMultiple = images.length > 1
+  const touchStartX = useRef<number | null>(null)
 
   const goTo = (next: number) => setIndex((next + images.length) % images.length)
+
+  const handleTouchStart = (e: TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+  }
+
+  const handleTouchEnd = (e: TouchEvent) => {
+    if (touchStartX.current === null) return
+    const delta = e.changedTouches[0].clientX - touchStartX.current
+    touchStartX.current = null
+    if (!hasMultiple || Math.abs(delta) < SWIPE_THRESHOLD_PX) return
+    goTo(delta < 0 ? index + 1 : index - 1)
+  }
 
   useEffect(() => {
     if (!lightboxOpen) return
@@ -50,7 +66,11 @@ export function RoomGallery({ images, alt }: RoomGalleryProps) {
 
   return (
     <>
-      <div className="group/gallery relative aspect-[4/3] overflow-hidden">
+      <div
+        className="group/gallery relative aspect-[4/3] overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
         <button
           type="button"
           onClick={() => setLightboxOpen(true)}
@@ -65,7 +85,7 @@ export function RoomGallery({ images, alt }: RoomGalleryProps) {
           />
         </button>
 
-        <span className="pointer-events-none absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-charcoal-900/50 text-warmwhite opacity-0 transition-opacity group-hover/gallery:opacity-100">
+        <span className="pointer-events-none absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-charcoal-900/50 text-warmwhite opacity-100 transition-opacity md:opacity-0 md:group-hover/gallery:opacity-100">
           <Expand className="h-4 w-4" aria-hidden="true" />
         </span>
 
@@ -78,7 +98,7 @@ export function RoomGallery({ images, alt }: RoomGalleryProps) {
                 goTo(index - 1)
               }}
               aria-label="Foto anterior"
-              className="absolute left-2 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-charcoal-900/50 text-warmwhite opacity-0 transition-opacity group-hover/gallery:opacity-100"
+              className="absolute left-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-charcoal-900/50 text-warmwhite opacity-100 transition-opacity md:opacity-0 md:group-hover/gallery:opacity-100"
             >
               <ChevronLeft className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -89,7 +109,7 @@ export function RoomGallery({ images, alt }: RoomGalleryProps) {
                 goTo(index + 1)
               }}
               aria-label="Foto siguiente"
-              className="absolute right-2 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-charcoal-900/50 text-warmwhite opacity-0 transition-opacity group-hover/gallery:opacity-100"
+              className="absolute right-2 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-charcoal-900/50 text-warmwhite opacity-100 transition-opacity md:opacity-0 md:group-hover/gallery:opacity-100"
             >
               <ChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -127,6 +147,8 @@ export function RoomGallery({ images, alt }: RoomGalleryProps) {
               // more robust than relying on every child to stopPropagation.
               if (e.target === e.currentTarget) setLightboxOpen(false)
             }}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
           >
             <button
               type="button"

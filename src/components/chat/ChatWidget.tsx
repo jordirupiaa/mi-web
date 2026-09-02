@@ -76,7 +76,7 @@ export function ChatWidget() {
         <div
           role="dialog"
           aria-label={t('chat.title')}
-          className="flex h-[28rem] w-[calc(100vw-2.5rem)] max-w-sm flex-col overflow-hidden rounded-3xl bg-warmwhite shadow-lifted ring-1 ring-sand-200"
+          className="flex h-[28rem] max-h-[75dvh] w-[calc(100vw-2.5rem)] max-w-sm flex-col overflow-hidden rounded-3xl bg-warmwhite shadow-lifted ring-1 ring-sand-200"
         >
           <div className="flex items-center justify-between bg-charcoal-800 px-5 py-4">
             <div>
