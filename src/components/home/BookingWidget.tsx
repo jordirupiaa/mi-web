@@ -52,7 +52,7 @@ export function BookingWidget({ variant = 'floating' }: { variant?: 'floating' |
             min={today}
             onChange={(e) => handleCheckIn(e.target.value)}
             required
-            className="w-full rounded-xl border border-sand-300 bg-warmwhite px-3.5 py-3 text-sm text-charcoal-800 outline-none focus:border-terracotta-500 focus:ring-2 focus:ring-terracotta-500/20"
+            className="w-full rounded-xl border border-sand-300 bg-warmwhite px-3.5 py-3 text-base text-charcoal-800 outline-none focus:border-terracotta-500 focus:ring-2 focus:ring-terracotta-500/20"
           />
         </label>
 
@@ -66,7 +66,7 @@ export function BookingWidget({ variant = 'floating' }: { variant?: 'floating' |
             min={addDaysISO(checkIn, 1)}
             onChange={(e) => setCheckOut(e.target.value)}
             required
-            className="w-full rounded-xl border border-sand-300 bg-warmwhite px-3.5 py-3 text-sm text-charcoal-800 outline-none focus:border-terracotta-500 focus:ring-2 focus:ring-terracotta-500/20"
+            className="w-full rounded-xl border border-sand-300 bg-warmwhite px-3.5 py-3 text-base text-charcoal-800 outline-none focus:border-terracotta-500 focus:ring-2 focus:ring-terracotta-500/20"
           />
         </label>
 
@@ -77,7 +77,7 @@ export function BookingWidget({ variant = 'floating' }: { variant?: 'floating' |
           <select
             value={guests}
             onChange={(e) => setGuests(Number(e.target.value))}
-            className="w-full rounded-xl border border-sand-300 bg-warmwhite px-3.5 py-3 text-sm text-charcoal-800 outline-none focus:border-terracotta-500 focus:ring-2 focus:ring-terracotta-500/20"
+            className="w-full rounded-xl border border-sand-300 bg-warmwhite px-3.5 py-3 text-base text-charcoal-800 outline-none focus:border-terracotta-500 focus:ring-2 focus:ring-terracotta-500/20"
           >
             {[1, 2, 3, 4, 5, 6].map((n) => (
               <option key={n} value={n}>

@@ -115,7 +115,7 @@ export function ChatWidget() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder={t('chat.inputPlaceholder')}
-              className="min-w-0 flex-1 rounded-full border border-sand-300 bg-warmwhite px-4 py-2.5 text-sm text-charcoal-800 outline-none focus:border-terracotta-500 focus:ring-2 focus:ring-terracotta-500/20"
+              className="min-w-0 flex-1 rounded-full border border-sand-300 bg-warmwhite px-4 py-2.5 text-base text-charcoal-800 outline-none focus:border-terracotta-500 focus:ring-2 focus:ring-terracotta-500/20"
             />
             <button
               type="submit"
