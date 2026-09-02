@@ -1,11 +1,10 @@
 # Hotel Casa Mas — robots.txt
-# NOTE: the site currently runs locally only (no public domain yet). Update
-# the Sitemap line below with the real production domain before/when this
-# site is deployed publicly, so it points at the actual sitemap location.
+# NOTE: update the Sitemap line below with the real production domain once
+# this site is deployed there, so it points at the actual sitemap location.
+# (There is no /admin panel to disallow any more — this site has no backend,
+# see README.md "Why no backend".)
 
 User-agent: *
 Allow: /
-Disallow: /admin
-Disallow: /admin/login
 
 Sitemap: https://www.hotelcasamas.com/sitemap.xml

@@ -2,10 +2,30 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <!--
+      Icon set: the SVG mark is the primary favicon (crisp at any size, used
+      by every modern browser except Safari's tab bar); the PNGs are
+      generated fallbacks (see public/favicon.svg, regenerate with sharp if
+      the mark ever changes) for the one thing the SVG can't cover —
+      Safari/iOS home-screen bookmarks specifically require a PNG
+      apple-touch-icon, they won't rasterize the SVG for that themselves.
+    -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Hotel Casa Mas — en pleno centro de Lloret de Mar, en la calle principal, a 3 minutos de la playa y a 5 de la zona de ocio nocturno. Reserve su estancia en la Costa Brava." />
     <title>Hotel Casa Mas | Lloret de Mar</title>
+    <!--
+      Canonical URL and placeholder production domain: update every
+      https://www.hotelcasamas.com reference on this page (and in
+      public/robots.txt and public/sitemap.xml) to the real domain once the
+      site is deployed there — until then this only matters once search
+      engines/crawlers can reach it.
+    -->
+    <link rel="canonical" href="https://www.hotelcasamas.com/" />
 
     <!--
       Open Graph / Twitter Card: shown when this page is shared on social
@@ -19,18 +39,61 @@
     <meta property="og:site_name" content="Hotel Casa Mas" />
     <meta property="og:title" content="Hotel Casa Mas | Lloret de Mar" />
     <meta property="og:description" content="Hotel Casa Mas — en pleno centro de Lloret de Mar, en la calle principal, a 3 minutos de la playa y a 5 de la zona de ocio nocturno. Reserve su estancia en la Costa Brava." />
-    <meta property="og:image" content="/images/location/vista_lloret.jpeg" />
+    <meta property="og:url" content="https://www.hotelcasamas.com/" />
+    <!-- Cropped/compressed to the 1200x630 social-preview standard — see public/images/og-image.jpg (regenerate from public/images/location/vista_lloret.jpeg with sharp if it ever needs updating; the original is a multi-MB camera photo, too heavy for link-preview bots to fetch reliably). -->
+    <meta property="og:image" content="/images/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="es_ES" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Hotel Casa Mas | Lloret de Mar" />
     <meta name="twitter:description" content="Hotel Casa Mas — en pleno centro de Lloret de Mar, a 3 minutos de la playa y a 5 de la zona de ocio nocturno." />
-    <meta name="twitter:image" content="/images/location/vista_lloret.jpeg" />
+    <meta name="twitter:image" content="/images/og-image.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!--
+      Structured data (schema.org LodgingBusiness): lets Google show rich
+      results (address, phone, price range) for this site directly in
+      search, rather than a bare blue link. Static in the HTML (not built
+      client-side, unlike PageSeo's per-route title/description) so every
+      crawler sees it, including ones that don't execute JavaScript. Keep
+      this in sync with src/data/businessInfo.ts and src/data/hotelFacts.ts
+      if any of these real facts about the hotel change.
+    -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LodgingBusiness",
+        "name": "Hotel Casa Mas",
+        "image": "https://www.hotelcasamas.com/images/og-image.jpg",
+        "url": "https://www.hotelcasamas.com/",
+        "telephone": "+34625360056",
+        "email": "hotelcasamas@gmail.com",
+        "priceRange": "€€",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Carrer de Sant Pere 50",
+          "addressLocality": "Lloret de Mar",
+          "postalCode": "17310",
+          "addressRegion": "Girona",
+          "addressCountry": "ES"
+        },
+        "checkinTime": "16:30",
+        "checkoutTime": "11:00",
+        "petsAllowed": false,
+        "numberOfRooms": 40,
+        "amenityFeature": [
+          { "@type": "LocationFeatureSpecification", "name": "Free Wi-Fi", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Air conditioning", "value": true },
+          { "@type": "LocationFeatureSpecification", "name": "Elevator", "value": true }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

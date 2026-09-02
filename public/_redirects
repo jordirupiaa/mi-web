@@ -1,0 +1,6 @@
+# Single-page app: every route is handled client-side by react-router, so
+# any path Netlify doesn't recognize as a static file (a deep link like
+# /habitaciones, or a browser refresh on one) must still be served
+# index.html rather than Netlify's own 404 page. Without this rule, direct
+# links to any page other than "/" break on Netlify.
+/*  /index.html  200
