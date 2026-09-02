@@ -81,4 +81,17 @@
   .text-balance {
     text-wrap: balance;
   }
+
+  /*
+   * Some mobile in-app browsers (WhatsApp, Instagram, etc.) miscalculate
+   * plain `vh` when their own UI chrome overlaps the page, which can crop
+   * content that relies on a `vh`-based min-height (e.g. the hero section).
+   * `dvh` tracks the browser's actual visible viewport and fixes this in
+   * every engine that supports it; the plain `vh` line above it is the
+   * fallback for engines that don't.
+   */
+  .hero-viewport {
+    min-height: 92vh;
+    min-height: 92dvh;
+  }
 }

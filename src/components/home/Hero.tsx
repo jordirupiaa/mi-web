@@ -6,7 +6,7 @@ export function Hero() {
   const { t } = useTranslation()
 
   return (
-    <section className="relative flex min-h-[92vh] w-full items-end overflow-hidden">
+    <section className="hero-viewport relative flex w-full items-end overflow-hidden">
       <img
         src={HERO_IMAGE}
         alt="Atardecer sobre la playa y bahía de Lloret de Mar"
