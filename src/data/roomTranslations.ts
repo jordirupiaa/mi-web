@@ -24,7 +24,7 @@ const ROOM_TEXT: Record<RoomSlug, Record<Language, RoomText>> = {
     it: { name: 'Camera Singola', description: 'Sistemazione confortevole per un ospite con un letto, bagno privato, doccia, armadio, cassaforte, patio e vista città.' },
   },
   'twin-ventana': {
-    es: { name: 'Habitación Twin con Ventana', description: 'Habitación doble confortable con dos camas, baño privado con ducha, armario, caja fuerte y vistas a la ciudad.' },
+    es: { name: 'Habitación Doble con Ventana', description: 'Habitación doble confortable con dos camas, baño privado con ducha, armario, caja fuerte y vistas a la ciudad.' },
     en: { name: 'Twin Room with Window', description: 'Comfortable twin room with two beds, private bathroom, shower, wardrobe, safe deposit box and city views.' },
     fr: { name: 'Chambre Twin avec Fenêtre', description: 'Chambre twin confortable avec deux lits, salle de bains privée, douche, armoire, coffre-fort et vue sur la ville.' },
     ca: { name: 'Habitació Twin amb Finestra', description: 'Habitació twin confortable amb dos llits, bany privat, dutxa, armari, caixa forta i vistes a la ciutat.' },
@@ -32,7 +32,7 @@ const ROOM_TEXT: Record<RoomSlug, Record<Language, RoomText>> = {
     it: { name: 'Camera Twin con Finestra', description: 'Confortevole camera twin con due letti, bagno privato, doccia, armadio, cassaforte e vista città.' },
   },
   'twin-balcon': {
-    es: { name: 'Habitación Twin con Balcón', description: 'Habitación doble confortable con dos camas, baño privado con ducha, armario, caja fuerte, balcón privado y vistas a la ciudad.' },
+    es: { name: 'Habitación Doble con Balcón', description: 'Habitación doble confortable con dos camas, baño privado con ducha, armario, caja fuerte, balcón privado y vistas a la ciudad.' },
     en: { name: 'Twin Room with Balcony', description: 'Comfortable twin room with two beds, private bathroom, shower, wardrobe, safe deposit box, private balcony and city views.' },
     fr: { name: 'Chambre Twin avec Balcon', description: 'Chambre twin confortable avec deux lits, salle de bains privée, douche, armoire, coffre-fort, balcon privé et vue sur la ville.' },
     ca: { name: 'Habitació Twin amb Balcó', description: 'Habitació twin confortable amb dos llits, bany privat, dutxa, armari, caixa forta, balcó privat i vistes a la ciutat.' },

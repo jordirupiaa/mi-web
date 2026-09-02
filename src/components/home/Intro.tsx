@@ -9,7 +9,7 @@ export function Intro() {
       <div className="overflow-hidden rounded-3xl shadow-card">
         <img
           src={ROOM_BALCONY_IMAGE}
-          alt="Habitación Twin con balcón de Hotel Casa Mas"
+          alt="Habitación Doble con balcón de Hotel Casa Mas"
           className="h-[420px] w-full object-cover md:h-[520px]"
           loading="lazy"
         />

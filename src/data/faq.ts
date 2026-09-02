@@ -403,7 +403,7 @@ export const FAQ_TOPICS: FaqTopic[] = [
       it: ['tipi di camera', 'quali camere avete', 'quante camere'],
     },
     answer: {
-      es: 'Tenemos 40 habitaciones: Individual, Twin con Ventana, Twin con Balcón, Triple, Cuádruple y un Apartamento Ático. Puede verlas todas en la sección de Habitaciones.',
+      es: 'Tenemos 40 habitaciones: Individual, Doble con Ventana, Doble con Balcón, Triple, Cuádruple y un Apartamento Ático. Puede verlas todas en la sección de Habitaciones.',
       en: 'We have 40 rooms: Single, Twin with Window, Twin with Balcony, Triple, Quadruple and a Penthouse Apartment. You can see them all in the Rooms section.',
       fr: 'Nous avons 40 chambres : Simple, Twin avec Fenêtre, Twin avec Balcon, Triple, Quadruple et un Appartement Penthouse. Vous pouvez toutes les voir dans la section Chambres.',
       ca: 'Tenim 40 habitacions: Individual, Twin amb Finestra, Twin amb Balcó, Triple, Quàdruple i un Apartament Àtic. Les pot veure totes a la secció d\'Habitacions.',

@@ -24,7 +24,7 @@ Reservations are handled entirely by the hotel's SiteMinder-connected booking en
 
 Any other enquiry is answered directly by phone or email (`src/data/businessInfo.ts`), or by the on-site chat widget, which matches common questions against a fixed FAQ (`src/data/faq.ts`) — no server round-trip needed.
 
-Since nothing on the site needs to be read or written from a database, there is no Supabase project, no admin panel, and no environment configuration to manage. Room types, prices-on-request, contact details and hotel policies are plain data files that get edited directly in the codebase and redeployed — see "Updating content" below.
+Since nothing on the site needs to be read or written from a database, there is no database, no admin panel, and no environment configuration to manage. Room types, prices-on-request, contact details and hotel policies are plain data files that get edited directly in the codebase and redeployed — see "Updating content" below.
 
 ## Project structure
 

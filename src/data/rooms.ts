@@ -1,9 +1,8 @@
 /**
- * The hotel's real room types, hard-coded here now that the site no longer
- * reads them from Supabase's `services` table. There are exactly six real
- * room types at Hotel Casa Mas (confirmed by the hotel) — this list is the
- * single source of truth for them, in the order they're presented
- * throughout the site.
+ * The hotel's real room types, hard-coded here as plain data. There are
+ * exactly six real room types at Hotel Casa Mas (confirmed by the hotel) —
+ * this list is the single source of truth for them, in the order they're
+ * presented throughout the site.
  *
  * `slug` ties a room to its photo folder (src/assets/rooms/<slug>/, see
  * src/data/images.ts) and to its per-language name/description
