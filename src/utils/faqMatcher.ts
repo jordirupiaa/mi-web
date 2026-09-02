@@ -17,12 +17,94 @@ function normalize(text: string): string {
     .trim()
 }
 
-/** Distinct tokens only — a phrase like "ciao ciao" must not out-score "ciao" just by repeating a word. */
+/**
+ * Pure grammatical filler — articles, prepositions, pronouns, and the small
+ * set of courtesy/modal verbs ("quiero", "puedo", "me gustaría"...) visitors
+ * wrap around their real question. None of these carry topic-specific
+ * meaning on their own, and a real, elaborately-phrased question ("Buenos
+ * días, quería preguntar si el hotel tiene aparcamiento cerca porque...")
+ * is mostly made of them — left in, they dilute the token overlap score
+ * against the short, hand-written variants until a long-but-relevant
+ * question no longer clears the match threshold. Stripped from both the
+ * visitor's query and every candidate variant (same tokenize() call), so
+ * the comparison stays symmetric: this only removes noise, it never
+ * introduces an asymmetric advantage for either side.
+ *
+ * Deliberately excludes any word that is itself the entire content of the
+ * small-talk topics (hola/hi/bonjour/gracias/thanks/danke/adiós/bye...) —
+ * those must survive tokenization or greeting/thanks/goodbye recognition
+ * would break.
+ */
+const STOPWORDS = new Set([
+  // Spanish
+  'el', 'la', 'los', 'las', 'un', 'una', 'unos', 'unas', 'de', 'del', 'al', 'en', 'y', 'o', 'u', 'a',
+  'ante', 'bajo', 'con', 'contra', 'desde', 'durante', 'entre', 'hacia', 'hasta', 'mediante', 'para',
+  'por', 'segun', 'sin', 'sobre', 'tras', 'que', 'como', 'cual', 'cuales', 'quien', 'quienes',
+  'es', 'soy', 'eres', 'somos', 'sois', 'son', 'esta', 'estoy', 'estamos', 'estan', 'ser', 'estar',
+  'hay', 'tener', 'tengo', 'tiene', 'tenemos', 'tienen', 'teneis', 'puedo', 'puede', 'podemos',
+  'pueden', 'podeis', 'quiero', 'quiere', 'queremos', 'quieren', 'quereis', 'queria', 'querria',
+  'gustaria', 'necesito', 'necesita', 'necesitamos', 'necesitan', 'deseo', 'desea',
+  'me', 'te', 'se', 'nos', 'os', 'le', 'les', 'lo', 'mi', 'mis', 'tu', 'tus', 'su', 'sus',
+  'nuestro', 'nuestra', 'nuestros', 'nuestras', 'yo', 'nosotros', 'nosotras', 'vosotros', 'vosotras',
+  'ellos', 'ellas', 'usted', 'ustedes', 'favor', 'si', 'no', 'ya', 'muy', 'mas', 'tambien', 'pero',
+  'porque', 'aunque', 'entonces', 'asi', 'algo', 'alguna', 'alguno', 'algunos', 'algunas',
+  'esto', 'eso', 'ese', 'esa', 'estos', 'esos', 'estas', 'esas', 'este', 'perdona', 'perdon', 'oye',
+  'voy', 'vas', 'va', 'vamos', 'vais', 'van', 'vaya', 'vayamos', 'ire', 'iras', 'ira', 'iremos', 'iran',
+  // English
+  'the', 'a', 'an', 'of', 'in', 'on', 'at', 'to', 'for', 'with', 'from', 'by', 'and', 'or', 'is',
+  'are', 'am', 'was', 'were', 'be', 'being', 'been', 'have', 'has', 'had',
+  'can', 'could', 'will', 'would', 'should', 'i', 'you', 'he', 'she', 'we', 'they', 'him', 'her',
+  'us', 'them', 'my', 'your', 'his', 'its', 'our', 'their', 'this', 'that', 'these', 'those',
+  'there', 'here', 'what', 'which', 'who', 'whom', 'how', 'please', 'sorry', 'excuse',
+  // French
+  'le', 'les', 'un', 'une', 'des', 'du', 'au', 'aux', 'et', 'ou', 'a', 'dans', 'sur', 'sous', 'pour',
+  'par', 'avec', 'sans', 'entre', 'vers', 'chez', 'ce', 'cet', 'cette', 'ces', 'que', 'qui', 'quoi',
+  'comment', 'est', 'suis', 'sommes', 'etes', 'sont', 'etre', 'avoir', 'ai', 'as', 'avons', 'avez',
+  'ont', 'peux', 'peut', 'pouvons', 'pouvez', 'peuvent', 'veux', 'veut', 'voulons', 'voulez',
+  'veulent', 'je', 'il', 'elle', 'nous', 'vous', 'ils', 'elles', 'lui', 'leur', 'mon', 'ma', 'mes',
+  'ton', 'ta', 'tes', 'son', 'sa', 'ses', 'notre', 'votre', 'plus', 'tres', 'mais', 'donc', 'alors',
+  'aussi', 'svp', 'stp', 'pardon',
+  // Catalan
+  'el', 'els', 'les', 'un', 'uns', 'unes', 'del', 'al', 'en', 'i', 'amb', 'per', 'sense', 'que',
+  'qui', 'com', 'es', 'esta', 'soc', 'ets', 'som', 'sou', 'son', 'tinc', 'te', 'tens', 'tenim',
+  'teniu', 'tenen', 'puc', 'pot', 'podem', 'podeu', 'poden', 'vull', 'vol', 'volem', 'voleu',
+  'volen', 'voldria', 'necessito', 'necessita', 'jo', 'ell', 'ella', 'nosaltres', 'vosaltres',
+  'ells', 'elles', 'em', 'et', 'ens', 'us', 'li', 'meu', 'meva', 'teu', 'teva', 'seu', 'seva',
+  'nostre', 'vostre', 'molt', 'pero', 'doncs', 'perdo', 'perdoni',
+  // German
+  'der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einen', 'einem', 'einer', 'eines',
+  'und', 'oder', 'zu', 'im', 'an', 'am', 'auf', 'fur', 'mit', 'ohne', 'von', 'vom', 'bei', 'nach',
+  'ist', 'sind', 'bin', 'bist', 'seid', 'war', 'waren', 'sein', 'haben', 'habe', 'hast', 'hat',
+  'habt', 'kann', 'kannst', 'konnen', 'konnt', 'will', 'willst', 'wollen', 'wollt', 'mochte',
+  'mochtest', 'mochten', 'mochtet', 'brauche', 'braucht', 'brauchen', 'ich', 'du', 'er', 'sie',
+  'es', 'wir', 'ihr', 'mich', 'dich', 'sich', 'uns', 'euch', 'mein', 'meine', 'dein', 'deine',
+  'seine', 'ihre', 'unser', 'unsere', 'euer', 'eure', 'sehr', 'auch', 'aber', 'also', 'bitte',
+  'entschuldigung',
+  // Italian
+  'il', 'lo', 'gli', 'un', 'uno', 'una', 'di', 'dello', 'della', 'dei', 'degli', 'delle', 'e',
+  'o', 'ad', 'su', 'per', 'con', 'senza', 'tra', 'fra', 'che', 'chi', 'come', 'sono', 'sei',
+  'siamo', 'siete', 'essere', 'avere', 'ho', 'hai', 'ha', 'abbiamo', 'avete', 'hanno', 'posso',
+  'puoi', 'puo', 'possiamo', 'potete', 'possono', 'voglio', 'vuoi', 'vuole', 'vogliamo', 'volete',
+  'vogliono', 'vorrei', 'io', 'tu', 'lui', 'lei', 'noi', 'voi', 'loro', 'mi', 'ti', 'ci', 'vi',
+  'mio', 'mia', 'tuo', 'tua', 'suo', 'sua', 'nostro', 'vostro', 'molto', 'anche', 'ma', 'quindi',
+  'scusa', 'scusi',
+])
+
+/**
+ * Distinct tokens only — a phrase like "ciao ciao" must not out-score "ciao"
+ * just by repeating a word.
+ *
+ * Falls back to keeping stopwords if removing them would empty out an
+ * otherwise non-empty phrase (e.g. a hypothetical variant that's only
+ * grammatical filler) — src/data/faq.ts is written to be edited by hotel
+ * staff, not just developers, so a future variant made entirely of common
+ * words should degrade to a weaker match, not silently become permanently
+ * unmatchable with no error anywhere to signal it.
+ */
 function tokenize(text: string): Set<string> {
-  const words = normalize(text)
-    .split(' ')
-    .filter((word) => word.length > 1)
-  return new Set(words)
+  const words = normalize(text).split(' ').filter((word) => word.length > 1)
+  const withoutStopwords = words.filter((word) => !STOPWORDS.has(word))
+  return new Set(withoutStopwords.length > 0 ? withoutStopwords : words)
 }
 
 /** Classic edit-distance between two strings — used only by tokensMatch() below for light typo tolerance, not as a general spellchecker. */
@@ -45,17 +127,58 @@ function levenshtein(a: string, b: string): number {
 
 /**
  * Two tokens count as "the same word" if they're identical, or if both are
- * long enough (4+ letters) and differ by at most one typo — e.g. "tenjo" ~
- * "tengo", "chek" ~ "check". Deliberately conservative: short words are
- * excluded (a 1-letter edit can flip their meaning, e.g. "no"/"sí"), so this
+ * long enough and differ by only a small typo — e.g. "tenjo" ~ "tengo",
+ * "chek" ~ "check", "aparcaminento" ~ "aparcamiento". Deliberately
+ * conservative: short words are excluded entirely (a 1-letter edit can flip
+ * their meaning, e.g. "no"/"sí"), and longer words get more tolerance than
+ * shorter ones (a two-letter slip in a 12-letter word is still obviously the
+ * same word; the same slip in a 5-letter word is a coin flip) — so this
  * never turns into a general spellchecker, just forgiveness for the kind of
  * slip a visitor typing on a phone actually makes.
  */
 function tokensMatch(a: string, b: string): boolean {
   if (a === b) return true
-  if (a.length < 4 || b.length < 4) return false
-  if (Math.abs(a.length - b.length) > 1) return false
-  return levenshtein(a, b) <= 1
+  const minLength = Math.min(a.length, b.length)
+  if (minLength < 4) return false
+  const maxDistance = minLength >= 7 ? 2 : 1
+  if (Math.abs(a.length - b.length) > maxDistance) return false
+  return levenshtein(a, b) <= maxDistance
+}
+
+/**
+ * How many distinct topics use a given (post-stopword) token anywhere in
+ * their phrasing — the basis for weighting matches by how distinctive the
+ * matched word actually is. Built fresh per findBestMatch() call from
+ * whatever `entries` were passed in, so it adapts automatically to
+ * whatever FAQ list is in use rather than hard-coding word rarity.
+ */
+function buildDocFrequency<T>(entries: MatchableEntry<T>[]): Map<string, number> {
+  const df = new Map<string, number>()
+  for (const entry of entries) {
+    const seenInEntry = new Set<string>()
+    for (const variant of entry.variants) {
+      for (const token of tokenize(variant)) seenInEntry.add(token)
+    }
+    for (const token of seenInEntry) df.set(token, (df.get(token) ?? 0) + 1)
+  }
+  return df
+}
+
+/**
+ * A word used by only one or two topics ("perro", "aparcamiento") is a much
+ * stronger signal that a message is *about* that topic than a word shared
+ * across a dozen of them ("hotel", "habitación") — plain token-overlap
+ * counting treats both the same, which is why a single, perfectly on-topic
+ * word ("perro") in an otherwise ordinarily-phrased question ("es posible
+ * alojarnos con él en el hotel") could still score too low: with only one
+ * matched token among several, overlap alone can't tell "the one word that
+ * matched happens to be the whole point" apart from "the one word that
+ * matched is a coincidence". Classic inverse-document-frequency weighting
+ * fixes that: rarer (across topics) tokens count for more.
+ */
+function idfWeight(token: string, df: Map<string, number>, totalEntries: number): number {
+  const freq = df.get(token) ?? 1
+  return Math.log(1 + totalEntries / freq)
 }
 
 interface PhraseScore {
@@ -65,22 +188,40 @@ interface PhraseScore {
 }
 
 /** How well a single candidate phrase matches the visitor's query. */
-function scorePhrase(queryNormalized: string, queryTokens: Set<string>, phrase: string): PhraseScore {
+function scorePhrase(
+  queryNormalized: string,
+  queryTokens: Set<string>,
+  phrase: string,
+  df: Map<string, number>,
+  totalEntries: number
+): PhraseScore {
   const phraseNormalized = normalize(phrase)
   const phraseTokens = tokenize(phrase)
+  // Tie-break metric favors the phrase with more *meaningful* (post-stopword)
+  // tokens, not more raw characters — otherwise a phrase padded with
+  // grammatical filler ("a quién pregunto durante mi estancia", 2 real
+  // tokens once "a/quién/durante/mi" are stripped) reads as more "specific"
+  // than a tighter, equally-relevant phrase ("aire acondicionado", also 2
+  // tokens) purely because its unfiltered string is longer — even though
+  // both matched the same number of real concepts. The tiny fractional term
+  // only breaks a tie between phrases with the identical token count.
+  const specificity = phraseTokens.size + phraseNormalized.length / 10000
   if (phraseTokens.size === 0 || queryTokens.size === 0) {
-    return { score: 0, specificity: phraseNormalized.length }
+    return { score: 0, specificity }
   }
 
-  let overlap = 0
+  let weightedOverlap = 0
+  let phraseWeightTotal = 0
   for (const token of phraseTokens) {
+    const weight = idfWeight(token, df, totalEntries)
+    phraseWeightTotal += weight
     if (queryTokens.has(token)) {
-      overlap++
+      weightedOverlap += weight
       continue
     }
     for (const queryToken of queryTokens) {
       if (tokensMatch(token, queryToken)) {
-        overlap++
+        weightedOverlap += weight
         break
       }
     }
@@ -93,24 +234,54 @@ function scorePhrase(queryNormalized: string, queryTokens: Set<string>, phrase: 
   // lets a short exact keyword ("wifi") score perfectly against a query
   // that's *just* that keyword, but no longer rewards a short phrase for
   // merely appearing somewhere inside a much longer, mostly-unrelated query.
-  const precision = overlap / phraseTokens.size
-  const recall = overlap / queryTokens.size
-  let score = precision + recall > 0 ? (2 * precision * recall) / (precision + recall) : 0
+  // Both precision and overlap below are IDF-weighted (see idfWeight): a
+  // matched word shared by many topics barely moves the score, one unique
+  // to a single topic moves it a lot.
+  const precision = phraseWeightTotal > 0 ? weightedOverlap / phraseWeightTotal : 0
+  // A real, elaborately-phrased question ("Buenos días, quería preguntar
+  // si..., porque vamos a venir en coche desde Francia y no sé dónde
+  // aparcar") can easily run to 10-15 content words once greeting/courtesy
+  // filler is stripped, most of which are just that visitor's own narration
+  // and will never appear in any short, hand-written variant. Computing
+  // recall against the *raw* query length would keep punishing the match
+  // for every extra word past the point that's already informative, until a
+  // genuinely relevant topic no longer clears the threshold — which is
+  // exactly the "doesn't understand longer questions" failure this widget
+  // was reported to have. Capping the denominator stops the penalty from
+  // growing without bound past a reasonably-informative question length,
+  // while still applying it in full below the cap — so a short, coincidental
+  // one-word overlap inside an otherwise unrelated 3-4 word query (the
+  // "vale" scenario below) is still caught.
+  const RECALL_CAP = 5
+  const recall = weightedOverlap / Math.min(queryTokens.size, RECALL_CAP)
+  const beta = 0.6
+  const betaSq = beta * beta
+  let score =
+    betaSq * precision + recall > 0 ? ((1 + betaSq) * precision * recall) / (betaSq * precision + recall) : 0
 
   // An exact match ("ciao" said as a greeting) is the strongest signal.
   // A substring match (one phrase fully contains the other) is weaker, and
   // is scaled by how much of the longer string the shorter one actually
   // covers — "vale" is a substring of "cuanto vale la habitacion", but it's
-  // only a sliver of it, so it earns a small nudge, not a large one.
+  // only a sliver of it, so it earns a small nudge, not a large one. Below
+  // MIN_COVERAGE it earns nothing at all: a short courtesy phrase like
+  // "buenos días" is very often the literal, contiguous opening words of an
+  // otherwise unrelated, much longer question ("Buenos días, quería
+  // preguntar si... aparcamiento...") — with no coverage floor, that
+  // coincidental contiguity out-scores the real, on-topic words even when
+  // they match with equal precision, just because those words happen to be
+  // scattered through the sentence instead of sitting next to each other.
+  const MIN_COVERAGE = 0.25
   if (queryNormalized === phraseNormalized) {
     score += 1
   } else if (queryNormalized.includes(phraseNormalized) || phraseNormalized.includes(queryNormalized)) {
     const shorter = Math.min(queryNormalized.length, phraseNormalized.length)
     const longer = Math.max(queryNormalized.length, phraseNormalized.length)
-    score += 0.5 * (shorter / longer)
+    const coverage = shorter / longer
+    if (coverage >= MIN_COVERAGE) score += 0.5 * coverage
   }
 
-  return { score, specificity: phraseNormalized.length }
+  return { score, specificity }
 }
 
 export interface MatchableEntry<T> {
@@ -125,11 +296,12 @@ export function findBestMatch<T>(query: string, entries: MatchableEntry<T>[], th
   const queryTokens = tokenize(query)
   if (queryTokens.size === 0) return null
 
+  const df = buildDocFrequency(entries)
   let best: { entry: MatchableEntry<T>; score: number; specificity: number } | null = null
 
   for (const entry of entries) {
     for (const variant of entry.variants) {
-      const { score, specificity } = scorePhrase(queryNormalized, queryTokens, variant)
+      const { score, specificity } = scorePhrase(queryNormalized, queryTokens, variant, df, entries.length)
       // On a tie, prefer the more specific (longer) phrase — e.g. a two-word
       // farewell like "ciao ciao" should win over a one-word greeting "ciao"
       // when both score the same, rather than whichever topic came first.

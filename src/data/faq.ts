@@ -43,7 +43,7 @@ export const FAQ_TOPICS: FaqTopic[] = [
     // reply instead of falling through to the "I don't know that" fallback.
     id: 'greeting',
     variants: {
-      es: ['hola', 'buenas', 'hey', 'buenos días', 'buenas tardes', 'buenas noches', 'qué tal', 'hola buenas', 'hola, buenas', 'saludos'],
+      es: ['hola', 'ola', 'buenas', 'hey', 'buenos días', 'buenas tardes', 'buenas noches', 'qué tal', 'hola buenas', 'hola, buenas', 'saludos'],
       en: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'greetings', 'hiya'],
       fr: ['bonjour', 'salut', 'coucou', 'bonsoir', 'bonne journée'],
       ca: ['hola', 'bon dia', 'bona tarda', 'bona nit', 'ei', 'salutacions'],
@@ -433,8 +433,8 @@ export const FAQ_TOPICS: FaqTopic[] = [
   {
     id: 'receptionHours',
     variants: {
-      es: ['recepción', 'horario de recepción', 'recepción 24 horas', 'hay alguien en recepción de noche', 'a quién pregunto durante mi estancia', 'recepción 24h'],
-      en: ['reception', 'reception hours', '24 hour reception', 'is there someone at reception at night', 'who do i ask during my stay'],
+      es: ['recepción', 'horario de recepción', 'recepción 24 horas', 'hay alguien en recepción de noche', 'a quién consulto durante mi estancia', 'recepción 24h'],
+      en: ['reception', 'reception hours', '24 hour reception', 'is there someone at reception at night', 'who do i speak to during my stay'],
       fr: ['réception', 'horaires de la réception', 'réception 24h', "y a-t-il quelqu'un à la réception la nuit"],
       ca: ['recepció', 'horari de recepció', 'recepció 24 hores', 'hi ha algú a recepció de nit'],
       de: ['rezeption', 'öffnungszeiten der rezeption', '24 stunden rezeption', 'ist nachts jemand an der rezeption'],
