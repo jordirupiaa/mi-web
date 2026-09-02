@@ -5,6 +5,7 @@ import { FAQ_TOPICS, type FaqLanguage } from '../../data/faq'
 import { findBestMatch, interpolate, type MatchableEntry } from '../../utils/faqMatcher'
 import { BUSINESS_INFO } from '../../data/businessInfo'
 import { formatPhoneDisplay } from '../../utils/formatPhone'
+import { useChatWidget } from '../../context/ChatWidgetContext'
 
 interface ChatMessage {
   id: number
@@ -23,7 +24,7 @@ export function ChatWidget() {
   const { t, i18n } = useTranslation()
   const lang = toFaqLanguage(i18n.resolvedLanguage)
 
-  const [open, setOpen] = useState(false)
+  const { open, toggleChat, closeChat } = useChatWidget()
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [input, setInput] = useState('')
   const nextId = useRef(1)
@@ -85,7 +86,7 @@ export function ChatWidget() {
             </div>
             <button
               type="button"
-              onClick={() => setOpen(false)}
+              onClick={closeChat}
               aria-label={t('chat.closeLabel')}
               className="flex h-8 w-8 items-center justify-center rounded-full text-warmwhite/80 hover:bg-warmwhite/10 hover:text-warmwhite"
             >
@@ -131,7 +132,7 @@ export function ChatWidget() {
 
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={toggleChat}
         aria-label={open ? t('chat.closeLabel') : t('chat.openLabel')}
         aria-expanded={open}
         className="flex h-14 w-14 items-center justify-center rounded-full bg-terracotta-600 text-warmwhite shadow-lifted transition-transform hover:scale-105 hover:bg-terracotta-700"

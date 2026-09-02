@@ -161,7 +161,10 @@
     "goToBooking": "Go to bookings",
     "policiesTitle": "Hotel policies",
     "hoursTitle": "Reception hours",
-    "hoursBody": "During the summer season, reception is staffed 24 hours a day. For anything you need during your stay, please come directly to reception and we'll be glad to help."
+    "hoursBody": "During the summer season, reception is staffed 24 hours a day. For anything you need during your stay, please come directly to reception and we'll be glad to help.",
+    "assistantTitle": "Virtual assistant for frequently asked questions",
+    "assistantBody": "Have a quick question? Our virtual assistant answers instantly about hours, services, pets, parking or cancellations.",
+    "assistantCta": "Open virtual assistant"
   },
   "policies": {
     "checkIn": "Check-in",

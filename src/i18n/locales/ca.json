@@ -161,7 +161,10 @@
     "goToBooking": "Anar a reserves",
     "policiesTitle": "Polítiques de l'hotel",
     "hoursTitle": "Horari de recepció",
-    "hoursBody": "Durant la temporada d'estiu, la recepció està disponible les 24 hores del dia. Per a qualsevol necessitat durant la seva estada, pot adreçar-se directament a recepció i l'atendrem amb molt de gust."
+    "hoursBody": "Durant la temporada d'estiu, la recepció està disponible les 24 hores del dia. Per a qualsevol necessitat durant la seva estada, pot adreçar-se directament a recepció i l'atendrem amb molt de gust.",
+    "assistantTitle": "Assistent virtual per a preguntes freqüents",
+    "assistantBody": "Té algun dubte ràpid? El nostre assistent virtual respon a l'instant sobre horaris, serveis, mascotes, pàrquing o cancel·lacions.",
+    "assistantCta": "Obrir l'assistent virtual"
   },
   "policies": {
     "checkIn": "Entrada (check-in)",

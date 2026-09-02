@@ -1,13 +1,15 @@
 import { useTranslation } from 'react-i18next'
-import { Clock, Mail, MapPin, Phone } from 'lucide-react'
+import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react'
 import { BUSINESS_INFO } from '../data/businessInfo'
 import { PoliciesTable } from '../components/shared/PoliciesTable'
 import { buildDirectBookUrl } from '../utils/directBook'
 import { formatPhoneDisplay } from '../utils/formatPhone'
 import { PageSeo } from '../components/shared/PageSeo'
+import { useChatWidget } from '../context/ChatWidgetContext'
 
 export function Contact() {
   const { t } = useTranslation()
+  const { openChat } = useChatWidget()
 
   return (
     <div className="pt-20">
@@ -62,13 +64,35 @@ export function Contact() {
         </div>
       </section>
 
-      <section className="container-hotel pb-24">
+      <section className="container-hotel pb-12">
         <div className="rounded-3xl bg-warmwhite p-8 ring-1 ring-sand-200">
           <div className="flex items-center gap-2">
             <Clock className="h-5 w-5 text-terracotta-600" aria-hidden="true" />
             <h2 className="font-display text-xl text-charcoal-800">{t('contact.hoursTitle')}</h2>
           </div>
           <p className="mt-4 text-sm leading-relaxed text-charcoal-600">{t('contact.hoursBody')}</p>
+        </div>
+      </section>
+
+      <section className="container-hotel pb-24">
+        <div className="flex flex-col items-start gap-6 rounded-3xl bg-marine-700 p-8 text-sand-100 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-start gap-4">
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-warmwhite/10 text-terracotta-300">
+              <MessageCircle className="h-5 w-5" aria-hidden="true" />
+            </span>
+            <div>
+              <h2 className="font-display text-xl text-warmwhite">{t('contact.assistantTitle')}</h2>
+              <p className="mt-2 max-w-md text-sm leading-relaxed text-sand-200/80">{t('contact.assistantBody')}</p>
+            </div>
+          </div>
+          <button
+            type="button"
+            onClick={openChat}
+            className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-terracotta-600 px-6 py-3 text-sm font-semibold text-warmwhite transition-colors hover:bg-terracotta-700"
+          >
+            <MessageCircle className="h-4 w-4" aria-hidden="true" />
+            {t('contact.assistantCta')}
+          </button>
         </div>
       </section>
     </div>

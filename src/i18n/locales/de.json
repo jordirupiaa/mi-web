@@ -161,7 +161,10 @@
     "goToBooking": "Zur Buchung",
     "policiesTitle": "Hotelrichtlinien",
     "hoursTitle": "Rezeptionszeiten",
-    "hoursBody": "In der Sommersaison ist die Rezeption rund um die Uhr besetzt. Bei allem, was Sie während Ihres Aufenthalts benötigen, wenden Sie sich bitte direkt an die Rezeption — wir helfen Ihnen gerne weiter."
+    "hoursBody": "In der Sommersaison ist die Rezeption rund um die Uhr besetzt. Bei allem, was Sie während Ihres Aufenthalts benötigen, wenden Sie sich bitte direkt an die Rezeption — wir helfen Ihnen gerne weiter.",
+    "assistantTitle": "Virtueller Assistent für häufig gestellte Fragen",
+    "assistantBody": "Haben Sie eine schnelle Frage? Unser virtueller Assistent beantwortet sofort Fragen zu Öffnungszeiten, Services, Haustieren, Parkplatz oder Stornierungen.",
+    "assistantCta": "Virtuellen Assistenten öffnen"
   },
   "policies": {
     "checkIn": "Anreise (Check-in)",

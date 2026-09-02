@@ -161,7 +161,10 @@
     "goToBooking": "Vai alle prenotazioni",
     "policiesTitle": "Politiche dell'hotel",
     "hoursTitle": "Orari di reception",
-    "hoursBody": "Durante la stagione estiva, la reception è disponibile 24 ore su 24. Per qualsiasi necessità durante il soggiorno, può rivolgersi direttamente alla reception: saremo lieti di aiutarla."
+    "hoursBody": "Durante la stagione estiva, la reception è disponibile 24 ore su 24. Per qualsiasi necessità durante il soggiorno, può rivolgersi direttamente alla reception: saremo lieti di aiutarla.",
+    "assistantTitle": "Assistente virtuale per le domande frequenti",
+    "assistantBody": "Ha una domanda veloce? Il nostro assistente virtuale risponde all'istante su orari, servizi, animali, parcheggio o cancellazioni.",
+    "assistantCta": "Apri assistente virtuale"
   },
   "policies": {
     "checkIn": "Arrivo (check-in)",
