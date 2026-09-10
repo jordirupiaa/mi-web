@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { useCookieConsent } from '../../context/CookieConsentContext'
@@ -13,13 +14,43 @@ import { localizedPath } from '../../utils/localizedPath'
  */
 export function CookieBanner() {
   const { t, i18n } = useTranslation()
-  const { consent, hydrated, acceptAll, rejectAll, openPreferences } = useCookieConsent()
+  const { consent, hydrated, acceptAll, rejectAll, openPreferences, setBannerHeight } = useCookieConsent()
   const lang = (i18n.resolvedLanguage ?? 'es') as Parameters<typeof localizedPath>[1]
+  const ref = useRef<HTMLDivElement>(null)
+  const visible = hydrated && consent === null
 
-  if (!hydrated || consent !== null) return null
+  // Reports the banner's real rendered height (its text wraps to a
+  // different number of lines per language and per viewport width) so
+  // other fixed-position UI — the chat toggle in ChatWidget.tsx — can move
+  // itself clear instead of sitting on top of it. Reset to 0 once the
+  // banner is dismissed, so that UI returns to its normal position.
+  //
+  // Measures via getBoundingClientRect (the true border-box) rather than
+  // the ResizeObserver entry it fires from, and re-measures once web fonts
+  // finish loading: Playfair Display/Inter (see index.html) swap in after
+  // the initial render, and that font swap alone can reflow the banner's
+  // text onto a different number of lines — changing its real height
+  // *without* necessarily firing another resize on every browser (found by
+  // testing: the button ended up a good ~40px short of clearing the
+  // banner without this).
+  useEffect(() => {
+    if (!visible || !ref.current) {
+      setBannerHeight(0)
+      return
+    }
+    const el = ref.current
+    const measure = () => setBannerHeight(el.getBoundingClientRect().height)
+    const observer = new ResizeObserver(measure)
+    observer.observe(el)
+    document.fonts?.ready.then(measure)
+    return () => observer.disconnect()
+  }, [visible, setBannerHeight])
+
+  if (!visible) return null
 
   return (
     <div
+      ref={ref}
       role="dialog"
       aria-modal="false"
       aria-label={t('cookies.bannerTitle')}

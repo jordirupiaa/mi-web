@@ -6,6 +6,7 @@ import { findBestMatch, interpolate, type MatchableEntry } from '../../utils/faq
 import { BUSINESS_INFO } from '../../data/businessInfo'
 import { formatPhoneDisplay } from '../../utils/formatPhone'
 import { useChatWidget } from '../../context/ChatWidgetContext'
+import { useCookieConsent } from '../../context/CookieConsentContext'
 
 interface ChatMessage {
   id: number
@@ -25,6 +26,15 @@ export function ChatWidget() {
   const lang = toFaqLanguage(i18n.resolvedLanguage)
 
   const { open, toggleChat, closeChat } = useChatWidget()
+  // The cookie banner (CookieBanner.tsx) is a full-width bar pinned to the
+  // very bottom on first visit — without moving out of its way, this
+  // button sits on top of it, overlapping "Aceptar todas" awkwardly (still
+  // clickable, just visually messy). bannerHeight is CookieBanner's own
+  // *measured* height (its text wraps differently per language and per
+  // viewport width, so a fixed guess isn't reliable) — shift up by exactly
+  // that much, plus a small gap, while it's showing.
+  const { hydrated, consent, bannerHeight } = useCookieConsent()
+  const bannerShowing = hydrated && consent === null
   const [messages, setMessages] = useState<ChatMessage[]>([])
   const [input, setInput] = useState('')
   const nextId = useRef(1)
@@ -72,7 +82,18 @@ export function ChatWidget() {
   }
 
   return (
-    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-3 sm:bottom-6 sm:right-6">
+    // z-[210]: above CookieBanner (z-[200], see CookieBanner.tsx) — the
+    // banner is a full-width bar sitting at the very bottom of the screen
+    // on first visit, which otherwise sits on top of and blocks this
+    // button entirely (found while testing a chat bugfix: the button
+    // became unclickable until the banner was dismissed).
+    // The inline style overrides bottom-5/sm:bottom-6 only while the
+    // banner is showing, since the offset needed is a measured value
+    // Tailwind can't know ahead of time — see bannerShowing above.
+    <div
+      className="fixed bottom-5 right-5 z-[210] flex flex-col items-end gap-3 sm:bottom-6 sm:right-6"
+      style={bannerShowing ? { bottom: bannerHeight + 20 } : undefined}
+    >
       {open && (
         <div
           role="dialog"

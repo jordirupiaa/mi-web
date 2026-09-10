@@ -127,22 +127,28 @@ function levenshtein(a: string, b: string): number {
 
 /**
  * Two tokens count as "the same word" if they're identical, or if both are
- * long enough and differ by only a small typo — e.g. "tenjo" ~ "tengo",
- * "chek" ~ "check", "aparcaminento" ~ "aparcamiento". Deliberately
- * conservative: short words are excluded entirely (a 1-letter edit can flip
- * their meaning, e.g. "no"/"sí"), and longer words get more tolerance than
- * shorter ones (a two-letter slip in a 12-letter word is still obviously the
- * same word; the same slip in a 5-letter word is a coin flip) — so this
- * never turns into a general spellchecker, just forgiveness for the kind of
- * slip a visitor typing on a phone actually makes.
+ * long enough (4+ letters) and differ by at most one typo — e.g. "tenjo" ~
+ * "tengo", "chek" ~ "check", "aparcaminento" ~ "aparcamiento". Deliberately
+ * conservative: short words are excluded (a 1-letter edit can flip their
+ * meaning, e.g. "no"/"sí"), so this never turns into a general spellchecker,
+ * just forgiveness for the kind of slip a visitor typing on a phone
+ * actually makes.
+ *
+ * This used to allow 2 edits for 7+-letter words, on the reasoning that a
+ * bigger typo in a longer word is still obviously the same word. In
+ * practice it wasn't: "apartamento" and "aparcamiento" are two completely
+ * different, entirely real Spanish words that happen to be exactly 2 edits
+ * apart, and a guest asking about the *apartment's* capacity ("el
+ * apartamento que aforo tiene") got a wrong, unrelated answer about
+ * *parking* as a result. The one case that motivated the wider tolerance
+ * ("aparcaminento" ~ "aparcamiento") turns out to only need 1 edit anyway —
+ * so there was nothing to lose by tightening this back up.
  */
 function tokensMatch(a: string, b: string): boolean {
   if (a === b) return true
-  const minLength = Math.min(a.length, b.length)
-  if (minLength < 4) return false
-  const maxDistance = minLength >= 7 ? 2 : 1
-  if (Math.abs(a.length - b.length) > maxDistance) return false
-  return levenshtein(a, b) <= maxDistance
+  if (a.length < 4 || b.length < 4) return false
+  if (Math.abs(a.length - b.length) > 1) return false
+  return levenshtein(a, b) <= 1
 }
 
 /**

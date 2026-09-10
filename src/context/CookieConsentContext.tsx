@@ -56,6 +56,17 @@ interface CookieConsentContextValue {
   /** True once client-side localStorage has been checked — avoids flashing the banner for returning visitors before we know their choice. */
   hydrated: boolean
   preferencesOpen: boolean
+  /**
+   * The cookie banner's own measured height in pixels, reported by
+   * CookieBanner itself (via a ResizeObserver — its text wraps to a
+   * different number of lines per language and per viewport width, so a
+   * fixed guess isn't reliable). Other fixed-position UI that would
+   * otherwise sit underneath the banner — the chat toggle in
+   * ChatWidget.tsx — reads this to move itself clear instead of
+   * overlapping it.
+   */
+  bannerHeight: number
+  setBannerHeight: (height: number) => void
   acceptAll: () => void
   rejectAll: () => void
   savePreferences: (choice: { analytics: boolean; marketing: boolean }) => void
@@ -81,6 +92,7 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
   const [consent, setConsent] = useState<ConsentValue | null>(null)
   const [hydrated, setHydrated] = useState(false)
   const [preferencesOpen, setPreferencesOpen] = useState(false)
+  const [bannerHeight, setBannerHeight] = useState(0)
 
   useEffect(() => {
     setConsent(readStoredConsent())
@@ -112,8 +124,30 @@ export function CookieConsentProvider({ children }: { children: ReactNode }) {
   const closePreferences = useCallback(() => setPreferencesOpen(false), [])
 
   const value = useMemo<CookieConsentContextValue>(
-    () => ({ consent, hydrated, preferencesOpen, acceptAll, rejectAll, savePreferences, openPreferences, closePreferences }),
-    [consent, hydrated, preferencesOpen, acceptAll, rejectAll, savePreferences, openPreferences, closePreferences]
+    () => ({
+      consent,
+      hydrated,
+      preferencesOpen,
+      bannerHeight,
+      setBannerHeight,
+      acceptAll,
+      rejectAll,
+      savePreferences,
+      openPreferences,
+      closePreferences,
+    }),
+    [
+      consent,
+      hydrated,
+      preferencesOpen,
+      bannerHeight,
+      setBannerHeight,
+      acceptAll,
+      rejectAll,
+      savePreferences,
+      openPreferences,
+      closePreferences,
+    ]
   )
 
   return <CookieConsentContext.Provider value={value}>{children}</CookieConsentContext.Provider>
