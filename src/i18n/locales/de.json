@@ -10,8 +10,12 @@
     "locationDescription": "Hotel Casa Mas liegt in der Fußgängerzone von Lloret de Mar: Strand 3 Minuten, Nachtleben 5 Minuten, wichtige Sehenswürdigkeiten zu Fuß erreichbar.",
     "contactTitle": "Kontakt | Hotel Casa Mas, Lloret de Mar",
     "contactDescription": "Kontaktieren Sie Hotel Casa Mas: Adresse, Telefon, E-Mail und Rezeptionszeiten. Buchen Sie direkt bei uns.",
-    "legalTitle": "Impressum und Datenschutzerklärung | Hotel Casa Mas",
-    "legalDescription": "Stornobedingungen, Datenschutzerklärung und Impressum von Hotel Casa Mas (ALBANTA HOSPITALITY S.L.)."
+    "avisoLegalTitle": "Impressum | Hotel Casa Mas, Lloret de Mar",
+    "avisoLegalDescription": "Impressum des Hotel Casa Mas: Unternehmensangaben, Nutzungs- und Buchungsbedingungen, geistiges Eigentum und anwendbares Recht.",
+    "privacidadTitle": "Datenschutzerklärung | Hotel Casa Mas, Lloret de Mar",
+    "privacidadDescription": "Wie das Hotel Casa Mas Ihre personenbezogenen Daten verarbeitet: Verantwortlicher, Zweck, Speicherdauer und Ihre DSGVO-Rechte.",
+    "cookiesTitle": "Cookie-Richtlinie | Hotel Casa Mas, Lloret de Mar",
+    "cookiesDescription": "Welche Cookies die Website des Hotel Casa Mas verwendet, wofür, und wie Sie diese akzeptieren, ablehnen oder Ihre Entscheidung jederzeit ändern können."
   },
   "nav": {
     "home": "Start",
@@ -30,7 +34,10 @@
     "book": "Buchen",
     "contact": "Kontakt",
     "rights": "Alle Rechte vorbehalten.",
-    "legal": "AGB und Datenschutz",
+    "legalNotice": "Impressum",
+    "privacyPolicy": "Datenschutz",
+    "cookiePolicy": "Cookies",
+    "cookieSettings": "Cookie-Einstellungen",
     "photoCredit": "Fotos: {{name}}"
   },
   "hero": {
@@ -201,5 +208,26 @@
     "inputPlaceholder": "Ihre Frage eingeben…",
     "send": "Senden",
     "fallback": "Entschuldigung, ich konnte Ihre Anfrage nicht ganz nachvollziehen. Fragen Sie mich gerne genauer nach Check-in, Parkplatz, Haustieren, WLAN oder unserer Stornierungsrichtlinie. Für eine persönlichere Betreuung erreichen Sie uns auch direkt unter {{phone}} oder {{email}}."
+  },
+  "legal": {
+    "languageNote": "Dieses Dokument ist ausschließlich auf Spanisch verfügbar, der gemäß dem geltenden spanischen Recht offiziellen Sprache dieses Impressums."
+  },
+  "cookies": {
+    "bannerTitle": "Wir verwenden Cookies",
+    "bannerBody": "Wir verwenden unbedingt erforderliche Speichertechnologien, damit die Website funktioniert. Mit Ihrer Erlaubnis könnten wir künftig auch Analyse- oder Marketing-Cookies verwenden.",
+    "acceptAll": "Alle akzeptieren",
+    "rejectAll": "Alle ablehnen",
+    "configure": "Einstellungen",
+    "policyLink": "Mehr erfahren",
+    "modalTitle": "Cookie-Einstellungen",
+    "modalBody": "Wählen Sie, welche Arten von Cookies Sie akzeptieren. Sie können diese Entscheidung jederzeit über den Link „Cookie-Einstellungen” in der Fußzeile ändern.",
+    "necessaryLabel": "Notwendig",
+    "necessaryDescription": "Unerlässlich, damit die Website funktioniert (z. B. um Ihre Sprache und diese Einstellung selbst zu speichern). Können nicht deaktiviert werden.",
+    "analyticsLabel": "Analyse",
+    "analyticsDescription": "Würden uns helfen zu verstehen, wie die Website genutzt wird. Wir verwenden derzeit kein Tool dieser Art.",
+    "marketingLabel": "Marketing",
+    "marketingDescription": "Würden verwendet, um relevante Werbung anzuzeigen. Wir verwenden derzeit kein Tool dieser Art.",
+    "save": "Einstellungen speichern",
+    "alwaysActive": "Immer aktiv"
   }
 }

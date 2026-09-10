@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { Layout } from './components/layout/Layout'
 import { LangRoute } from './components/layout/LangRoute'
 import { Home } from './pages/Home'
@@ -6,7 +6,9 @@ import { Rooms } from './pages/Rooms'
 import { About } from './pages/About'
 import { Location } from './pages/Location'
 import { Contact } from './pages/Contact'
-import { Legal } from './pages/Legal'
+import { AvisoLegal } from './pages/AvisoLegal'
+import { Privacy } from './pages/Privacy'
+import { CookiePolicy } from './pages/CookiePolicy'
 import { NotFound } from './pages/NotFound'
 
 /**
@@ -38,7 +40,11 @@ export function AppRoutes() {
           <Route path="/nosotros" element={<About />} />
           <Route path="/ubicacion" element={<Location />} />
           <Route path="/contacto" element={<Contact />} />
-          <Route path="/legal" element={<Legal />} />
+          <Route path="/aviso-legal" element={<AvisoLegal />} />
+          <Route path="/privacidad" element={<Privacy />} />
+          <Route path="/cookies" element={<CookiePolicy />} />
+          {/* Kept in case anything already links to the old combined page. */}
+          <Route path="/legal" element={<Navigate to="/aviso-legal" replace />} />
         </Route>
 
         {EXTRA_LANGUAGE_PREFIXES.map((lang) => (
@@ -48,7 +54,10 @@ export function AppRoutes() {
             <Route path="nosotros" element={<About />} />
             <Route path="ubicacion" element={<Location />} />
             <Route path="contacto" element={<Contact />} />
-            <Route path="legal" element={<Legal />} />
+            <Route path="aviso-legal" element={<AvisoLegal />} />
+            <Route path="privacidad" element={<Privacy />} />
+            <Route path="cookies" element={<CookiePolicy />} />
+            <Route path="legal" element={<Navigate to={`/${lang}/aviso-legal`} replace />} />
           </Route>
         ))}
 

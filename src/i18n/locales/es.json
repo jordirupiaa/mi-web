@@ -10,8 +10,12 @@
     "locationDescription": "Hotel Casa Mas se sitúa en el centro peatonal de Lloret de Mar: playa a 3 minutos, discotecas a 5, y los principales puntos de interés a pie.",
     "contactTitle": "Contacto | Hotel Casa Mas, Lloret de Mar",
     "contactDescription": "Contacte con Hotel Casa Mas: dirección, teléfono, correo electrónico y horario de recepción. Reserve directamente con nosotros.",
-    "legalTitle": "Aviso legal y política de privacidad | Hotel Casa Mas",
-    "legalDescription": "Condiciones de cancelación, política de privacidad y aviso legal de Hotel Casa Mas (ALBANTA HOSPITALITY S.L.)."
+    "avisoLegalTitle": "Aviso legal | Hotel Casa Mas, Lloret de Mar",
+    "avisoLegalDescription": "Aviso legal de Hotel Casa Mas: datos identificativos, condiciones de uso y de contratación, propiedad intelectual y legislación aplicable.",
+    "privacidadTitle": "Política de privacidad | Hotel Casa Mas, Lloret de Mar",
+    "privacidadDescription": "Cómo tratamos sus datos personales en Hotel Casa Mas: responsable del tratamiento, finalidad, conservación y sus derechos RGPD.",
+    "cookiesTitle": "Política de cookies | Hotel Casa Mas, Lloret de Mar",
+    "cookiesDescription": "Qué cookies utiliza el sitio web de Hotel Casa Mas, con qué finalidad, y cómo aceptarlas, rechazarlas o cambiar su decisión."
   },
   "nav": {
     "home": "Inicio",
@@ -30,7 +34,10 @@
     "book": "Reservar",
     "contact": "Contacto",
     "rights": "Todos los derechos reservados.",
-    "legal": "Términos, condiciones y privacidad",
+    "legalNotice": "Aviso legal",
+    "privacyPolicy": "Privacidad",
+    "cookiePolicy": "Cookies",
+    "cookieSettings": "Ajustes de cookies",
     "photoCredit": "Fotografías: {{name}}"
   },
   "hero": {
@@ -201,5 +208,26 @@
     "inputPlaceholder": "Escriba su pregunta…",
     "send": "Enviar",
     "fallback": "Disculpe, no he logrado entender del todo su consulta. Para responderle con precisión, puede probar preguntando sobre check-in, parking, mascotas, wifi o política de cancelación. Si prefiere un trato más personal, también puede contactarnos directamente al {{phone}} o {{email}}."
+  },
+  "legal": {
+    "languageNote": "Este documento se ofrece únicamente en español, idioma oficial de este aviso conforme a la normativa española aplicable."
+  },
+  "cookies": {
+    "bannerTitle": "Utilizamos cookies",
+    "bannerBody": "Usamos almacenamiento técnico necesario para que el sitio funcione. Con su permiso, también podríamos usar cookies analíticas o de marketing en el futuro.",
+    "acceptAll": "Aceptar todas",
+    "rejectAll": "Rechazar todas",
+    "configure": "Configurar",
+    "policyLink": "Más información",
+    "modalTitle": "Preferencias de cookies",
+    "modalBody": "Elija qué tipos de cookies acepta. Puede cambiar esta decisión en cualquier momento desde el enlace «Ajustes de cookies» en el pie de página.",
+    "necessaryLabel": "Necesarias",
+    "necessaryDescription": "Imprescindibles para que el sitio funcione (por ejemplo, recordar su idioma y esta misma preferencia). No se pueden desactivar.",
+    "analyticsLabel": "Analíticas",
+    "analyticsDescription": "Nos ayudarían a entender cómo se usa el sitio web. Actualmente no utilizamos ninguna herramienta de este tipo.",
+    "marketingLabel": "Marketing",
+    "marketingDescription": "Se usarían para mostrar publicidad relevante. Actualmente no utilizamos ninguna herramienta de este tipo.",
+    "save": "Guardar preferencias",
+    "alwaysActive": "Siempre activas"
   }
 }

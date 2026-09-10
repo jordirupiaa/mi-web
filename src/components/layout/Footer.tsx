@@ -5,6 +5,7 @@ import { BUSINESS_INFO } from '../../data/businessInfo'
 import { buildDirectBookUrl } from '../../utils/directBook'
 import { formatPhoneDisplay } from '../../utils/formatPhone'
 import { localizedPath } from '../../utils/localizedPath'
+import { useCookieConsent } from '../../context/CookieConsentContext'
 
 // The Lloret de Mar location photos (Castell de Lloret, the church, the
 // nightlife district, etc.) were taken by Leidy Giraldo, who asked for a
@@ -14,6 +15,7 @@ const PHOTOGRAPHER_NAME = 'Leidy Giraldo'
 
 export function Footer() {
   const { t, i18n } = useTranslation()
+  const { openPreferences } = useCookieConsent()
   const year = new Date().getFullYear()
   const lang = i18n.resolvedLanguage ?? 'es'
   const path = (bare: string) => localizedPath(bare, lang as Parameters<typeof localizedPath>[1])
@@ -61,15 +63,30 @@ export function Footer() {
       </div>
 
       <div className="border-t border-warmwhite/10">
-        <div className="container-hotel flex flex-col items-center justify-between gap-3 py-6 text-xs text-sand-200/60 md:flex-row">
+        {/*
+          Extra bottom padding (clearing the floating chat button's ~76px
+          fixed footprint in the bottom-right corner, see ChatWidget.tsx)
+          so this row — now four links wide instead of one — never sits
+          underneath it once the visitor scrolls all the way down.
+        */}
+        <div className="container-hotel flex flex-col items-center justify-between gap-3 py-6 pb-24 text-xs text-sand-200/60 md:flex-row">
           <p>
             © {year} Hotel Casa Mas. {t('footer.rights')}{' '}
             <span className="text-sand-200/40">· {t('footer.photoCredit', { name: PHOTOGRAPHER_NAME })}</span>
           </p>
-          <div className="flex items-center gap-5">
-            <Link to={path('/legal')} className="hover:text-terracotta-300">
-              {t('footer.legal')}
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+            <Link to={path('/aviso-legal')} className="hover:text-terracotta-300">
+              {t('footer.legalNotice')}
             </Link>
+            <Link to={path('/privacidad')} className="hover:text-terracotta-300">
+              {t('footer.privacyPolicy')}
+            </Link>
+            <Link to={path('/cookies')} className="hover:text-terracotta-300">
+              {t('footer.cookiePolicy')}
+            </Link>
+            <button type="button" onClick={openPreferences} className="hover:text-terracotta-300">
+              {t('footer.cookieSettings')}
+            </button>
           </div>
         </div>
       </div>

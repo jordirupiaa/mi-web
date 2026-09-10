@@ -10,8 +10,12 @@
     "locationDescription": "Hotel Casa Mas si trova nella zona pedonale del centro di Lloret de Mar: spiaggia a 3 minuti, vita notturna a 5 minuti, principali attrazioni a piedi.",
     "contactTitle": "Contatti | Hotel Casa Mas, Lloret de Mar",
     "contactDescription": "Contatta l'Hotel Casa Mas: indirizzo, telefono, e-mail e orari di reception. Prenota direttamente con noi.",
-    "legalTitle": "Note legali e informativa sulla privacy | Hotel Casa Mas",
-    "legalDescription": "Condizioni di cancellazione, informativa sulla privacy e note legali di Hotel Casa Mas (ALBANTA HOSPITALITY S.L.)."
+    "avisoLegalTitle": "Note legali | Hotel Casa Mas, Lloret de Mar",
+    "avisoLegalDescription": "Note legali di Hotel Casa Mas: dati identificativi, condizioni d'uso e di prenotazione, proprietà intellettuale e legge applicabile.",
+    "privacidadTitle": "Informativa sulla privacy | Hotel Casa Mas, Lloret de Mar",
+    "privacidadDescription": "Come Hotel Casa Mas tratta i suoi dati personali: titolare del trattamento, finalità, conservazione e i suoi diritti GDPR.",
+    "cookiesTitle": "Informativa sui cookie | Hotel Casa Mas, Lloret de Mar",
+    "cookiesDescription": "Quali cookie utilizza il sito di Hotel Casa Mas, con quale finalità, e come accettarli, rifiutarli o cambiare la sua decisione in qualsiasi momento."
   },
   "nav": {
     "home": "Home",
@@ -30,7 +34,10 @@
     "book": "Prenota",
     "contact": "Contatti",
     "rights": "Tutti i diritti riservati.",
-    "legal": "Termini, condizioni e privacy",
+    "legalNotice": "Note legali",
+    "privacyPolicy": "Privacy",
+    "cookiePolicy": "Cookie",
+    "cookieSettings": "Impostazioni cookie",
     "photoCredit": "Fotografie: {{name}}"
   },
   "hero": {
@@ -201,5 +208,26 @@
     "inputPlaceholder": "Scriva la sua domanda…",
     "send": "Invia",
     "fallback": "Mi scusi, non sono riuscito a capire del tutto la sua richiesta. Per risponderle con precisione, provi a chiedermi del check-in, del parcheggio, degli animali, del wifi o della nostra politica di cancellazione. Per un'assistenza più personale, può anche contattarci direttamente al {{phone}} o {{email}}."
+  },
+  "legal": {
+    "languageNote": "Questo documento è disponibile solo in spagnolo, lingua ufficiale di queste note legali ai sensi della normativa spagnola applicabile."
+  },
+  "cookies": {
+    "bannerTitle": "Utilizziamo i cookie",
+    "bannerBody": "Utilizziamo l'archiviazione strettamente necessaria al funzionamento del sito. Con il suo consenso, in futuro potremmo utilizzare anche cookie analitici o di marketing.",
+    "acceptAll": "Accetta tutti",
+    "rejectAll": "Rifiuta tutti",
+    "configure": "Configura",
+    "policyLink": "Maggiori informazioni",
+    "modalTitle": "Preferenze cookie",
+    "modalBody": "Scelga quali tipi di cookie accettare. Può modificare questa scelta in qualsiasi momento dal link \"Impostazioni cookie\" nel piè di pagina.",
+    "necessaryLabel": "Necessari",
+    "necessaryDescription": "Indispensabili per il funzionamento del sito (ad esempio, ricordare la sua lingua e questa stessa preferenza). Non possono essere disattivati.",
+    "analyticsLabel": "Analitici",
+    "analyticsDescription": "Ci aiuterebbero a capire come viene utilizzato il sito. Attualmente non utilizziamo alcuno strumento di questo tipo.",
+    "marketingLabel": "Marketing",
+    "marketingDescription": "Verrebbero utilizzati per mostrare pubblicità pertinente. Attualmente non utilizziamo alcuno strumento di questo tipo.",
+    "save": "Salva preferenze",
+    "alwaysActive": "Sempre attivi"
   }
 }

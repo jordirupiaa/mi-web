@@ -10,8 +10,12 @@
     "locationDescription": "Hotel Casa Mas is on the pedestrian centre of Lloret de Mar: beach 3 minutes away, nightlife 5 minutes away, and the main sights on foot.",
     "contactTitle": "Contact | Hotel Casa Mas, Lloret de Mar",
     "contactDescription": "Contact Hotel Casa Mas: address, phone, email and reception hours. Book directly with us.",
-    "legalTitle": "Legal Notice & Privacy Policy | Hotel Casa Mas",
-    "legalDescription": "Cancellation terms, privacy policy and legal notice for Hotel Casa Mas (ALBANTA HOSPITALITY S.L.)."
+    "avisoLegalTitle": "Legal Notice | Hotel Casa Mas, Lloret de Mar",
+    "avisoLegalDescription": "Legal notice for Hotel Casa Mas: company details, terms of use and booking conditions, intellectual property and applicable law.",
+    "privacidadTitle": "Privacy Policy | Hotel Casa Mas, Lloret de Mar",
+    "privacidadDescription": "How Hotel Casa Mas handles your personal data: data controller, purpose, retention and your GDPR rights.",
+    "cookiesTitle": "Cookie Policy | Hotel Casa Mas, Lloret de Mar",
+    "cookiesDescription": "Which cookies Hotel Casa Mas's website uses, why, and how to accept, reject or change your choice at any time."
   },
   "nav": {
     "home": "Home",
@@ -30,7 +34,10 @@
     "book": "Book",
     "contact": "Contact",
     "rights": "All rights reserved.",
-    "legal": "Terms, conditions and privacy",
+    "legalNotice": "Legal notice",
+    "privacyPolicy": "Privacy",
+    "cookiePolicy": "Cookies",
+    "cookieSettings": "Cookie settings",
     "photoCredit": "Photography: {{name}}"
   },
   "hero": {
@@ -201,5 +208,26 @@
     "inputPlaceholder": "Type your question…",
     "send": "Send",
     "fallback": "I'm sorry, I wasn't quite able to understand your question. To help you more precisely, try asking about check-in, parking, pets, wifi or our cancellation policy. For a more personal touch, you're also welcome to contact us directly at {{phone}} or {{email}}."
+  },
+  "legal": {
+    "languageNote": "This document is only available in Spanish, the official language of this notice under applicable Spanish law."
+  },
+  "cookies": {
+    "bannerTitle": "We use cookies",
+    "bannerBody": "We use strictly necessary storage to make the site work. With your permission, we may also use analytics or marketing cookies in the future.",
+    "acceptAll": "Accept all",
+    "rejectAll": "Reject all",
+    "configure": "Settings",
+    "policyLink": "Learn more",
+    "modalTitle": "Cookie preferences",
+    "modalBody": "Choose which types of cookies you accept. You can change this choice at any time from the \"Cookie settings\" link in the footer.",
+    "necessaryLabel": "Necessary",
+    "necessaryDescription": "Required for the site to work (e.g. remembering your language and this same preference). These can't be turned off.",
+    "analyticsLabel": "Analytics",
+    "analyticsDescription": "Would help us understand how the site is used. We don't currently use any tool of this kind.",
+    "marketingLabel": "Marketing",
+    "marketingDescription": "Would be used to show relevant advertising. We don't currently use any tool of this kind.",
+    "save": "Save preferences",
+    "alwaysActive": "Always active"
   }
 }

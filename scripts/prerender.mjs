@@ -41,7 +41,9 @@ const ROUTE_META = [
   { suffix: 'nosotros', seoKey: 'about', priority: '0.6', changefreq: 'monthly' },
   { suffix: 'ubicacion', seoKey: 'location', priority: '0.7', changefreq: 'monthly' },
   { suffix: 'contacto', seoKey: 'contact', priority: '0.6', changefreq: 'monthly' },
-  { suffix: 'legal', seoKey: 'legal', priority: '0.2', changefreq: 'yearly' },
+  { suffix: 'aviso-legal', seoKey: 'avisoLegal', priority: '0.2', changefreq: 'yearly' },
+  { suffix: 'privacidad', seoKey: 'privacidad', priority: '0.2', changefreq: 'yearly' },
+  { suffix: 'cookies', seoKey: 'cookies', priority: '0.2', changefreq: 'yearly' },
 ]
 
 /** Spanish is the default, unprefixed language (existing URLs, unchanged); see src/utils/localizedPath.ts. */

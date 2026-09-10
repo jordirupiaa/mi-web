@@ -10,8 +10,12 @@
     "locationDescription": "Hotel Casa Mas se situa al centre de vianants de Lloret de Mar: platja a 3 minuts, discoteques a 5, i els principals punts d'interès a peu.",
     "contactTitle": "Contacte | Hotel Casa Mas, Lloret de Mar",
     "contactDescription": "Contacti amb l'Hotel Casa Mas: adreça, telèfon, correu electrònic i horari de recepció. Reservi directament amb nosaltres.",
-    "legalTitle": "Avís legal i política de privacitat | Hotel Casa Mas",
-    "legalDescription": "Condicions de cancel·lació, política de privacitat i avís legal d'Hotel Casa Mas (ALBANTA HOSPITALITY S.L.)."
+    "avisoLegalTitle": "Avís legal | Hotel Casa Mas, Lloret de Mar",
+    "avisoLegalDescription": "Avís legal de l'Hotel Casa Mas: dades identificatives, condicions d'ús i de contractació, propietat intel·lectual i legislació aplicable.",
+    "privacidadTitle": "Política de privacitat | Hotel Casa Mas, Lloret de Mar",
+    "privacidadDescription": "Com tractem les seves dades personals a l'Hotel Casa Mas: responsable del tractament, finalitat, conservació i els seus drets RGPD.",
+    "cookiesTitle": "Política de cookies | Hotel Casa Mas, Lloret de Mar",
+    "cookiesDescription": "Quines cookies utilitza el lloc web de l'Hotel Casa Mas, amb quina finalitat, i com acceptar-les, rebutjar-les o canviar la seva decisió."
   },
   "nav": {
     "home": "Inici",
@@ -30,7 +34,10 @@
     "book": "Reservar",
     "contact": "Contacte",
     "rights": "Tots els drets reservats.",
-    "legal": "Termes, condicions i privacitat",
+    "legalNotice": "Avís legal",
+    "privacyPolicy": "Privacitat",
+    "cookiePolicy": "Cookies",
+    "cookieSettings": "Ajustos de cookies",
     "photoCredit": "Fotografies: {{name}}"
   },
   "hero": {
@@ -201,5 +208,26 @@
     "inputPlaceholder": "Escrigui la seva pregunta…",
     "send": "Enviar",
     "fallback": "Disculpi, no he acabat d'entendre del tot la seva consulta. Per respondre-li amb precisió, pot provar de preguntar sobre el check-in, el pàrquing, les mascotes, el wifi o la política de cancel·lació. Si prefereix un tracte més personal, també ens pot contactar directament al {{phone}} o {{email}}."
+  },
+  "legal": {
+    "languageNote": "Aquest document només es facilita en castellà, idioma oficial d'aquest avís segons la normativa espanyola aplicable."
+  },
+  "cookies": {
+    "bannerTitle": "Utilitzem cookies",
+    "bannerBody": "Utilitzem emmagatzematge tècnic necessari perquè el lloc funcioni. Amb el seu permís, també podríem utilitzar cookies analítiques o de màrqueting en el futur.",
+    "acceptAll": "Acceptar totes",
+    "rejectAll": "Rebutjar totes",
+    "configure": "Configurar",
+    "policyLink": "Més informació",
+    "modalTitle": "Preferències de cookies",
+    "modalBody": "Triï quins tipus de cookies accepta. Pot canviar aquesta decisió en qualsevol moment des de l'enllaç «Ajustos de cookies» al peu de pàgina.",
+    "necessaryLabel": "Necessàries",
+    "necessaryDescription": "Imprescindibles perquè el lloc funcioni (per exemple, recordar el seu idioma i aquesta mateixa preferència). No es poden desactivar.",
+    "analyticsLabel": "Analítiques",
+    "analyticsDescription": "Ens ajudarien a entendre com s'utilitza el lloc web. Actualment no utilitzem cap eina d'aquest tipus.",
+    "marketingLabel": "Màrqueting",
+    "marketingDescription": "S'utilitzarien per mostrar publicitat rellevant. Actualment no utilitzem cap eina d'aquest tipus.",
+    "save": "Desar preferències",
+    "alwaysActive": "Sempre actives"
   }
 }

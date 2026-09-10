@@ -10,8 +10,12 @@
     "locationDescription": "Hotel Casa Mas se trouve dans le centre piéton de Lloret de Mar : plage à 3 minutes, vie nocturne à 5 minutes, principaux sites à pied.",
     "contactTitle": "Contact | Hotel Casa Mas, Lloret de Mar",
     "contactDescription": "Contactez l'Hotel Casa Mas : adresse, téléphone, e-mail et horaires de réception. Réservez directement avec nous.",
-    "legalTitle": "Mentions légales et politique de confidentialité | Hotel Casa Mas",
-    "legalDescription": "Conditions d'annulation, politique de confidentialité et mentions légales de Hotel Casa Mas (ALBANTA HOSPITALITY S.L.)."
+    "avisoLegalTitle": "Mentions légales | Hotel Casa Mas, Lloret de Mar",
+    "avisoLegalDescription": "Mentions légales de l'Hotel Casa Mas : identité de l'entreprise, conditions d'utilisation et de réservation, propriété intellectuelle et droit applicable.",
+    "privacidadTitle": "Politique de confidentialité | Hotel Casa Mas, Lloret de Mar",
+    "privacidadDescription": "Comment l'Hotel Casa Mas traite vos données personnelles : responsable du traitement, finalité, conservation et vos droits RGPD.",
+    "cookiesTitle": "Politique de cookies | Hotel Casa Mas, Lloret de Mar",
+    "cookiesDescription": "Quels cookies utilise le site de l'Hotel Casa Mas, pourquoi, et comment les accepter, les refuser ou changer d'avis à tout moment."
   },
   "nav": {
     "home": "Accueil",
@@ -30,7 +34,10 @@
     "book": "Réserver",
     "contact": "Contact",
     "rights": "Tous droits réservés.",
-    "legal": "Conditions générales et confidentialité",
+    "legalNotice": "Mentions légales",
+    "privacyPolicy": "Confidentialité",
+    "cookiePolicy": "Cookies",
+    "cookieSettings": "Paramètres des cookies",
     "photoCredit": "Photographies : {{name}}"
   },
   "hero": {
@@ -201,5 +208,26 @@
     "inputPlaceholder": "Écrivez votre question…",
     "send": "Envoyer",
     "fallback": "Je suis désolé, je n'ai pas tout à fait compris votre question. Pour vous répondre avec précision, essayez de me demander à propos du check-in, du parking, des animaux, du wifi ou de notre politique d'annulation. Pour un accompagnement plus personnel, vous pouvez aussi nous contacter directement au {{phone}} ou à {{email}}."
+  },
+  "legal": {
+    "languageNote": "Ce document n'est disponible qu'en espagnol, langue officielle de cette mention légale conformément à la législation espagnole applicable."
+  },
+  "cookies": {
+    "bannerTitle": "Nous utilisons des cookies",
+    "bannerBody": "Nous utilisons un stockage strictement nécessaire au fonctionnement du site. Avec votre accord, nous pourrions aussi utiliser des cookies analytiques ou marketing à l'avenir.",
+    "acceptAll": "Tout accepter",
+    "rejectAll": "Tout refuser",
+    "configure": "Paramétrer",
+    "policyLink": "En savoir plus",
+    "modalTitle": "Préférences de cookies",
+    "modalBody": "Choisissez les types de cookies que vous acceptez. Vous pouvez modifier ce choix à tout moment depuis le lien « Paramètres des cookies » en bas de page.",
+    "necessaryLabel": "Nécessaires",
+    "necessaryDescription": "Indispensables au fonctionnement du site (par exemple, mémoriser votre langue et cette même préférence). Ils ne peuvent pas être désactivés.",
+    "analyticsLabel": "Analytiques",
+    "analyticsDescription": "Nous aideraient à comprendre l'utilisation du site. Nous n'utilisons actuellement aucun outil de ce type.",
+    "marketingLabel": "Marketing",
+    "marketingDescription": "Serviraient à afficher des publicités pertinentes. Nous n'utilisons actuellement aucun outil de ce type.",
+    "save": "Enregistrer les préférences",
+    "alwaysActive": "Toujours actifs"
   }
 }
