@@ -10,14 +10,20 @@ import { LegalLanguageNote } from '../components/shared/LegalLanguageNote'
  * former combined /legal page, and cross-checked directly against the
  * hotel's own live legal notice at hotelcasamaslloret.com/es/aviso-legal.html
  * (same CIF, same address, same mercantile registry data — consistent).
- * TOURISM_REGISTRY_NUMBER is the one piece of real information this
- * project has never had — and, checked directly, the hotel's own official
- * site doesn't publish it either (its own legal notice has no HUT/RTC
- * number at all). Fill it in with the actual Registre de Turisme de
- * Catalunya number before this page goes live; every other field here is
- * real, not a placeholder.
+ *
+ * TOURISM_REGISTRY_NUMBER: found in the Generalitat's own open-data
+ * Registre de Turisme de Catalunya (analisi.transparenciacatalunya.cat,
+ * dataset t2h3-cgys), filtering by this exact address — Carrer Sant Pere
+ * 50, 17310 Lloret de Mar — which returned exactly one "Hotels" entry,
+ * "Alta" (active), 40 "estances" (rooms), matching TOTAL_ROOMS in
+ * src/data/hotelFacts.ts exactly. Confirmed by the user. Note: that
+ * registry entry's titular is listed as an individual ("Ana Agustí Mas"),
+ * not ALBANTA HOSPITALITY S.L. — likely the registration simply hasn't
+ * been updated since a change of operating company, which happens; the
+ * registration number itself belongs to this physical establishment
+ * regardless of who currently runs it.
  */
-const TOURISM_REGISTRY_NUMBER = '[Nº de inscripción en el Registro de Turismo de Cataluña — pendiente de completar]'
+const TOURISM_REGISTRY_NUMBER = 'HG-000726-58'
 
 export function AvisoLegal() {
   const { t } = useTranslation()
