@@ -7,10 +7,15 @@ import { LegalLanguageNote } from '../components/shared/LegalLanguageNote'
  * information to be easily, directly and permanently accessible on the
  * site. Real data already used elsewhere on the site (src/data/businessInfo.ts)
  * plus the company's own tax/registry details, already published on the
- * former combined /legal page. TOURISM_REGISTRY_NUMBER is the one piece of
- * real information this project has never had — fill it in with the
- * hotel's actual Registre de Turisme de Catalunya (HUT) number before this
- * page goes live; every other field here is real, not a placeholder.
+ * former combined /legal page, and cross-checked directly against the
+ * hotel's own live legal notice at hotelcasamaslloret.com/es/aviso-legal.html
+ * (same CIF, same address, same mercantile registry data — consistent).
+ * TOURISM_REGISTRY_NUMBER is the one piece of real information this
+ * project has never had — and, checked directly, the hotel's own official
+ * site doesn't publish it either (its own legal notice has no HUT/RTC
+ * number at all). Fill it in with the actual Registre de Turisme de
+ * Catalunya number before this page goes live; every other field here is
+ * real, not a placeholder.
  */
 const TOURISM_REGISTRY_NUMBER = '[Nº de inscripción en el Registro de Turismo de Cataluña — pendiente de completar]'
 
@@ -42,6 +47,7 @@ export function AvisoLegal() {
                 <div className="flex gap-2"><dt className="font-semibold text-charcoal-700">Establecimiento:</dt><dd>Hotel Casa Mas — Carrer de Sant Pere 50, 17310 Lloret de Mar, Girona</dd></div>
                 <div className="flex gap-2"><dt className="font-semibold text-charcoal-700">Email:</dt><dd><a href="mailto:dpd@octalia.es" className="text-terracotta-700 hover:underline">dpd@octalia.es</a></dd></div>
                 <div className="flex gap-2"><dt className="font-semibold text-charcoal-700">Teléfono:</dt><dd><a href="tel:936606000" className="text-terracotta-700 hover:underline">936 606 000</a></dd></div>
+                <div className="flex gap-2"><dt className="font-semibold text-charcoal-700">Registro Mercantil:</dt><dd>Barcelona, tomo 49258, folio 35, hoja 614573, inscripción 1</dd></div>
                 <div className="flex gap-2"><dt className="font-semibold text-charcoal-700">Registro de turismo:</dt><dd>{TOURISM_REGISTRY_NUMBER}</dd></div>
               </dl>
             </section>
