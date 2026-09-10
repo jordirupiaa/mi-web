@@ -412,11 +412,13 @@ export const FAQ_TOPICS: FaqTopic[] = [
     },
   },
   {
-    // How many people/beds each room type sleeps — real figures taken
-    // directly from the hotel's own live booking-engine site
-    // (hotelcasamaslloret.com/es/rooms/<slug>.html), which lists them as
-    // "camas" per room type. Not a legal/fire-safety "aforo" figure (we
-    // have no such document), just the real, confirmed bed count per room.
+    // How many people each room type sleeps. Individual/Doble/Triple/
+    // Cuádruple match the "camas" count on the hotel's own live
+    // booking-engine site (hotelcasamaslloret.com/es/rooms/<slug>.html);
+    // the Ático's real capacity (8) was corrected directly by the hotel
+    // itself — higher than that site's listed 7 "camas", which undercounts
+    // it. Not a legal/fire-safety "aforo" figure (we have no such
+    // document), just the real, confirmed guest count per room.
     id: 'roomCapacity',
     variants: {
       es: ['aforo', 'capacidad', 'aforo apartamento', 'aforo del apartamento', 'capacidad del apartamento', 'cuántas personas caben', 'cuántas personas caben en el apartamento', 'cuántas camas tiene', 'cuántas camas tiene el apartamento', 'cuántas personas caben en una habitación', 'para cuánta gente es la habitación'],
@@ -427,12 +429,12 @@ export const FAQ_TOPICS: FaqTopic[] = [
       it: ['capienza', 'capacità', 'capacità dell\'appartamento', 'quante persone ci stanno', 'quante persone ci stanno nell\'appartamento', 'quanti letti ha'],
     },
     answer: {
-      es: 'La capacidad por tipo de alojamiento es: Individual, 1 persona; Doble (con ventana o balcón), 2 personas; Triple, 3 personas; Cuádruple, 4 personas; y el Apartamento Ático, hasta 7 personas (4 habitaciones separadas y 3 baños). Puede ver todos los detalles en la sección de Habitaciones.',
-      en: 'Capacity per room type: Single, 1 guest; Twin (with window or balcony), 2 guests; Triple, 3 guests; Quadruple, 4 guests; and the Penthouse Apartment, up to 7 guests (4 separate bedrooms and 3 bathrooms). You can see all the details in the Rooms section.',
-      fr: 'Capacité par type de chambre : Simple, 1 personne ; Twin (avec fenêtre ou balcon), 2 personnes ; Triple, 3 personnes ; Quadruple, 4 personnes ; et l\'Appartement Penthouse, jusqu\'à 7 personnes (4 chambres séparées et 3 salles de bains). Vous trouverez tous les détails dans la section Chambres.',
-      ca: 'La capacitat per tipus d\'allotjament és: Individual, 1 persona; Doble (amb finestra o balcó), 2 persones; Triple, 3 persones; Quàdruple, 4 persones; i l\'Apartament Àtic, fins a 7 persones (4 habitacions separades i 3 banys). Pot veure tots els detalls a la secció d\'Habitacions.',
-      de: 'Kapazität je Zimmertyp: Einzelzimmer, 1 Person; Zweibettzimmer (mit Fenster oder Balkon), 2 Personen; Dreibettzimmer, 3 Personen; Vierbettzimmer, 4 Personen; und das Penthouse-Apartment, bis zu 7 Personen (4 separate Schlafzimmer und 3 Badezimmer). Alle Details finden Sie im Bereich Zimmer.',
-      it: 'Capacità per tipo di camera: Singola, 1 persona; Doppia (con finestra o balcone), 2 persone; Tripla, 3 persone; Quadrupla, 4 persone; e l\'Appartamento Attico, fino a 7 persone (4 camere separate e 3 bagni). Può vedere tutti i dettagli nella sezione Camere.',
+      es: 'La capacidad por tipo de alojamiento es: Individual, 1 persona; Doble (con ventana o balcón), 2 personas; Triple, 3 personas; Cuádruple, 4 personas; y el Apartamento Ático, hasta 8 personas (4 habitaciones separadas y 3 baños). Puede ver todos los detalles en la sección de Habitaciones.',
+      en: 'Capacity per room type: Single, 1 guest; Twin (with window or balcony), 2 guests; Triple, 3 guests; Quadruple, 4 guests; and the Penthouse Apartment, up to 8 guests (4 separate bedrooms and 3 bathrooms). You can see all the details in the Rooms section.',
+      fr: 'Capacité par type de chambre : Simple, 1 personne ; Twin (avec fenêtre ou balcon), 2 personnes ; Triple, 3 personnes ; Quadruple, 4 personnes ; et l\'Appartement Penthouse, jusqu\'à 8 personnes (4 chambres séparées et 3 salles de bains). Vous trouverez tous les détails dans la section Chambres.',
+      ca: 'La capacitat per tipus d\'allotjament és: Individual, 1 persona; Doble (amb finestra o balcó), 2 persones; Triple, 3 persones; Quàdruple, 4 persones; i l\'Apartament Àtic, fins a 8 persones (4 habitacions separades i 3 banys). Pot veure tots els detalls a la secció d\'Habitacions.',
+      de: 'Kapazität je Zimmertyp: Einzelzimmer, 1 Person; Zweibettzimmer (mit Fenster oder Balkon), 2 Personen; Dreibettzimmer, 3 Personen; Vierbettzimmer, 4 Personen; und das Penthouse-Apartment, bis zu 8 Personen (4 separate Schlafzimmer und 3 Badezimmer). Alle Details finden Sie im Bereich Zimmer.',
+      it: 'Capacità per tipo di camera: Singola, 1 persona; Doppia (con finestra o balcone), 2 persone; Tripla, 3 persone; Quadrupla, 4 persone; e l\'Appartamento Attico, fino a 8 persone (4 camere separate e 3 bagni). Può vedere tutti i dettagli nella sezione Camere.',
     },
   },
   {
