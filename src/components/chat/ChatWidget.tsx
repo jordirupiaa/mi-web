@@ -7,6 +7,7 @@ import { BUSINESS_INFO } from '../../data/businessInfo'
 import { formatPhoneDisplay } from '../../utils/formatPhone'
 import { useChatWidget } from '../../context/ChatWidgetContext'
 import { useCookieConsent } from '../../context/CookieConsentContext'
+import { LanguageSwitcher } from '../layout/LanguageSwitcher'
 
 interface ChatMessage {
   id: number
@@ -100,19 +101,28 @@ export function ChatWidget() {
           aria-label={t('chat.title')}
           className="flex h-[28rem] max-h-[75dvh] w-[calc(100vw-2.5rem)] max-w-sm flex-col overflow-hidden rounded-3xl bg-warmwhite shadow-lifted ring-1 ring-sand-200"
         >
-          <div className="flex items-center justify-between bg-charcoal-800 px-5 py-4">
-            <div>
+          <div className="flex items-center justify-between gap-2 bg-charcoal-800 px-5 py-4">
+            <div className="min-w-0">
               <p className="font-display text-base text-warmwhite">{t('chat.title')}</p>
               <p className="text-xs text-sand-200/70">{t('chat.subtitle')}</p>
             </div>
-            <button
-              type="button"
-              onClick={closeChat}
-              aria-label={t('chat.closeLabel')}
-              className="flex h-8 w-8 items-center justify-center rounded-full text-warmwhite/80 hover:bg-warmwhite/10 hover:text-warmwhite"
-            >
-              <X className="h-4 w-4" aria-hidden="true" />
-            </button>
+            <div className="flex shrink-0 items-center gap-1">
+              {/* Same control (and same effect: it navigates to the
+                  localized URL, see LanguageSwitcher.tsx) as the one in the
+                  header — lets a visitor switch language without leaving
+                  the chat open. The FAQ answers above key off i18n's
+                  resolvedLanguage via toFaqLanguage(), so this also
+                  reslants future replies into the newly chosen language. */}
+              <LanguageSwitcher transparent />
+              <button
+                type="button"
+                onClick={closeChat}
+                aria-label={t('chat.closeLabel')}
+                className="flex h-8 w-8 items-center justify-center rounded-full text-warmwhite/80 hover:bg-warmwhite/10 hover:text-warmwhite"
+              >
+                <X className="h-4 w-4" aria-hidden="true" />
+              </button>
+            </div>
           </div>
 
           <div ref={scrollRef} className="flex-1 space-y-3 overflow-y-auto px-4 py-4" aria-live="polite">
